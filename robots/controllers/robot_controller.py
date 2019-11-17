@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from controller import Robot
 
 
-class RobotEmmiterReceiver(ABC):
+class RobotController(ABC):
     def __init__(self, timestep=None):
         self.robot = Robot()
 
@@ -13,14 +13,14 @@ class RobotEmmiterReceiver(ABC):
             self.timestep = timestep
 
     @abstractmethod
-    def handleEmitter():
+    def handle_emitter(self):
         pass
 
     @abstractmethod
-    def handleReceiver(self):
+    def handle_receiver(self):
         pass
 
     def run(self):
         while self.robot.step(self.timestep) != -1:
-            self.handleReceiver()
-            self.handleEmitter()
+            self.handle_receiver()
+            self.handle_emitter()
