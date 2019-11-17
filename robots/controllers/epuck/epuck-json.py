@@ -1,6 +1,6 @@
-from deepbots.robots.robot_emitter_reciever import RobotEmmiterReceiver
+from deepbots.robots.robot_controller import RobotController
 
-class EpuckJSON(RobotEmmiterReceiver):
+class EpuckJSON(RobotController):
 
     def __init__(self, sensors):
         
