@@ -3,10 +3,10 @@ from .robot_controller import RobotController
 from abc import abstractmethod
 
 
-class RobotEmitterReceiver(RobotController):
+class RobotEmitterReceiverList(RobotController):
     """
     Basic implementation of a robot that can emit and receive messages to/from the supervisor in string utf-8 form
-    that are comma separated.
+    that are comma separated, i.e. a list.
     """
     def __init__(self, timestep=None):
         super().__init__(timestep=timestep)
@@ -24,11 +24,11 @@ class RobotEmitterReceiver(RobotController):
 
     def handle_emitter(self):
         """
-        This emitter uses the user-implemented get_robot_data() method to get whatever data the robot gathered,
+        This emitter uses the user-implemented create_message() method to get whatever data the robot gathered,
         convert it to a string if needed and then use the emitter to send the data in a string utf-8 encoding to the
         supervisor.
         """
-        data = self.get_robot_data()
+        data = self.create_message()
 
         string_message = ""
         # message can either be a list that needs to be converted in a string or a straight-up string
@@ -59,7 +59,7 @@ class RobotEmitterReceiver(RobotController):
             self.receiver.nextPacket()
 
     @abstractmethod
-    def get_robot_data(self):
+    def create_message(self):
         """
         This method should be implemented to convert whatever data the robot has, eg. sensor data, into a message to be
         sent to the supervisor via the emitter.
