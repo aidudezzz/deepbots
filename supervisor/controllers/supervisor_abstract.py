@@ -1,9 +1,7 @@
 import sys
 from abc import ABC, abstractmethod
 
-from controller import Supervisor
-from deepbots.supervisor.supervisor_env import SupervisorEnv
-
+# from controller import Supervisor
 
 class AbstractSupervisor(SupervisorEnv, ABC):
     def __init__(self, timestep=None):
