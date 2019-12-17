@@ -1,7 +1,8 @@
-import sys
 from abc import ABC, abstractmethod
 
-# from controller import Supervisor
+from supervisor_env import SupervisorEnv
+
+from controller import Supervisor
 
 class AbstractSupervisor(SupervisorEnv, ABC):
     def __init__(self, timestep=None):
