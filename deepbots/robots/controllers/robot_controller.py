@@ -38,6 +38,9 @@ class RobotController(ABC):
 
         self.emitter, self.receiver = self.initialize_comms()
 
+    def get_timestep(self):
+        return self.timestep
+
     @abstractmethod
     def initialize_comms(self):
         """

@@ -1,6 +1,7 @@
 # from deepbots.robots.robot_controller import RobotController
-from .robot_controller import RobotController
 from abc import abstractmethod
+
+from .robot_controller import RobotController
 
 
 class RobotEmitterReceiverList(RobotController):
@@ -29,16 +30,15 @@ class RobotEmitterReceiverList(RobotController):
         supervisor.
         """
         data = self.create_message()
-
         string_message = ""
         # message can either be a list that needs to be converted in a string or a straight-up string
         if type(data) is list:
-            for i in range(len(data)):
-                string_message += data[i] + ","
+            string_message = ",".join(map(str, data))
         elif type(data) is str:
             string_message = data
         else:
-            raise TypeError("message must be either a comma-separated string or a 1D list")
+            raise TypeError(
+                "message must be either a comma-separated string or a 1D list")
 
         string_message = string_message.encode('utf-8')
         self.emitter.send(string_message)

@@ -3,6 +3,10 @@ from abc import ABC, abstractmethod
 
 class SupervisorEnv(ABC):
     @abstractmethod
+    def get_observations(self):
+        pass
+
+    @abstractmethod
     def step(self, action):
         pass
 
