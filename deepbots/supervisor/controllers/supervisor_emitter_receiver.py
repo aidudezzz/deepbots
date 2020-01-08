@@ -5,12 +5,15 @@ from deepbots.supervisor.controllers.supervisor_abstract import \
 
 
 class SupervisorEmitterReceiver(SupervisorAbstract):
-    def __init__(self, time_step=None):
+    def __init__(self,
+                 emitter_name='emitter',
+                 receiver_name='receiver',
+                 time_step=None):
+
         super(SupervisorEmitterReceiver, self).__init__(time_step)
+        self.initialize_coms(emitter_name, receiver_name)
 
-    def initialize_coms(self, emitter_name='emitter',
-                        receiver_name='receiver'):
-
+    def initialize_coms(self, emitter_name, receiver_name):
         self.emitter = self.supervisor.getEmitter(emitter_name)
         self.receiver = self.supervisor.getReceiver(receiver_name)
         self.receiver.enable(self.timestep)
@@ -30,14 +33,13 @@ class SupervisorEmitterReceiver(SupervisorAbstract):
 
 class SupervisorCSV(SupervisorEmitterReceiver):
     def __init__(self,
-                 time_step=None,
                  emitter_name='emitter',
                  receiver_name='receiver',
-                 num=8):
-        super(SupervisorCSV, self).__init__(time_step)
-        super().initialize_coms(emitter_name, receiver_name)
+                 time_step=None):
+        super(SupervisorCSV, self).__init__(emitter_name, receiver_name,
+                                            time_step)
 
-        self._last_mesage = [0 for i in range(num)]
+        self._last_mesage = None
 
     def handle_emitter(self, action):
         message = (','.join(map(str, action))).encode('utf-8')
