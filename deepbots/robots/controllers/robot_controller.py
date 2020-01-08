@@ -3,9 +3,9 @@ from abc import ABC, abstractmethod
 from controller import Robot
 
 
-class RobotController(ABC):
+class RobotEmitterReceiver(ABC):
     """
-    This RobotController implements only the most basic run method, that steps the robot and calls the handleEmitter,
+    This RobotEmitterReceiver implements only the most basic run method, that steps the robot and calls the handleEmitter,
     handleReceiver methods that are needed for communication with the supervisor.
 
     This class must be inherited by all robot controllers created by the user and the handleEmitter, handleReceiver,
@@ -13,7 +13,10 @@ class RobotController(ABC):
 
     For a simpler RobotController that implements the methods in a basic form inherit the RobotEmitterReceiver class.
     """
-    def __init__(self, timestep=None):
+    def __init__(self,
+                 emitter_name="emitter",
+                 receiver_name="receiver",
+                 timestep=None):
         """
         The basic robot constructor.
 
@@ -36,13 +39,14 @@ class RobotController(ABC):
         else:
             self.timestep = timestep
 
-        self.emitter, self.receiver = self.initialize_comms()
+        self.emitter, self.receiver = self.initialize_comms(
+            emitter_name, receiver_name)
 
     def get_timestep(self):
         return self.timestep
 
     @abstractmethod
-    def initialize_comms(self):
+    def initialize_comms(self, emitter_name, receiver_name):
         """
         This method should initialize and the return emitter and receiver in a tuple as expected by the constructor.
 

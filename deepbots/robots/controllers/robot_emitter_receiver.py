@@ -1,18 +1,21 @@
 # from deepbots.robots.robot_controller import RobotController
 from abc import abstractmethod
 
-from .robot_controller import RobotController
+from .robot_controller import RobotEmitterReceiver
 
 
-class RobotEmitterReceiverList(RobotController):
+class RobotEmitterReceiverCSV(RobotEmitterReceiver):
     """
     Basic implementation of a robot that can emit and receive messages to/from the supervisor in string utf-8 form
     that are comma separated, i.e. a list.
     """
-    def __init__(self, timestep=None):
+    def __init__(self,
+                 emitter_name="emitter",
+                 receiver_name="receiver",
+                 timestep=None):
         super().__init__(timestep=timestep)
 
-    def initialize_comms(self):
+    def initialize_comms(self, emitter_name, receiver_name):
         """
         This method implements the basic emitter/receiver initialization that assumes that an emitter and a receiver
         components are present on the Webots robot with appropriate DEFs ("emitter"/"receiver").
