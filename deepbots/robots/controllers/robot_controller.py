@@ -13,10 +13,10 @@ class RobotEmitterReceiver(ABC):
 
     For a simpler RobotController that implements the methods in a basic form inherit the RobotEmitterReceiver class.
     """
-    def __init__(self,
-                 emitter_name="emitter",
-                 receiver_name="receiver",
-                 timestep=None):
+
+    def __init__(
+        self, emitter_name="emitter", receiver_name="receiver", timestep=None
+    ):
         """
         The basic robot constructor.
 
@@ -40,7 +40,8 @@ class RobotEmitterReceiver(ABC):
             self.timestep = timestep
 
         self.emitter, self.receiver = self.initialize_comms(
-            emitter_name, receiver_name)
+            emitter_name, receiver_name
+        )
 
     def get_timestep(self):
         return self.timestep

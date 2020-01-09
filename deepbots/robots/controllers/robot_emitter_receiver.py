@@ -1,4 +1,3 @@
-# from deepbots.robots.robot_controller import RobotController
 from abc import abstractmethod
 
 from .robot_controller import RobotEmitterReceiver
@@ -9,10 +8,10 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
     Basic implementation of a robot that can emit and receive messages to/from the supervisor in string utf-8 form
     that are comma separated, i.e. a list.
     """
-    def __init__(self,
-                 emitter_name="emitter",
-                 receiver_name="receiver",
-                 timestep=None):
+
+    def __init__(
+        self, emitter_name="emitter", receiver_name="receiver", timestep=None
+    ):
         super().__init__(timestep=timestep)
 
     def initialize_comms(self, emitter_name, receiver_name):
@@ -41,7 +40,8 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
             string_message = data
         else:
             raise TypeError(
-                "message must be either a comma-separated string or a 1D list")
+                "message must be either a comma-separated string or a 1D list"
+            )
 
         string_message = string_message.encode("utf-8")
         self.emitter.send(string_message)

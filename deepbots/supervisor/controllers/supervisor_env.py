@@ -16,6 +16,7 @@ class SupervisorEnv(ABC):
      +----------+      (observation, reward)      +---------------+
 
     """
+
     @abstractmethod
     def get_observations(self):
         """

@@ -8,7 +8,8 @@ setup(
     author="aidudezzz",
     author_email="deepbots@protonmail.com",
     version="0.0.1",
-    description="A wrapper framework for Reinforcement Learning in Webots simulator",
+    description=
+    "A wrapper framework for Reinforcement Learning in Webots simulator",
     long_description=readme,
     long_description_content_type="text/markdown",
     packages=find_packages(),

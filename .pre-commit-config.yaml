@@ -6,7 +6,7 @@ repos:
         language_version: python3.6
         # override until resolved: https://github.com/ambv/black/issues/402
         files: \.py?$
-        types: []
+        types: [python, pyi]
 
   - repo: https://gitlab.com/pycqa/flake8
     rev: 3.7.9
