@@ -3,10 +3,10 @@ from abc import ABC, abstractmethod
 
 class SupervisorEnv(ABC):
     """
-    This class represent the basic template which contains those necessary
+    This class represents the basic template which contains the necessary
     methods to train a reinforcement learning algorithm. The interface class
     follows the gym interface which is standardized in much many reinforcement
-    learning algorithm. The OpenAI gym environment can be described by the
+    learning algorithms. The OpenAI gym environment can be described by the
     following figure:
 
      +----------+             (action)            +---------------+
@@ -16,7 +16,6 @@ class SupervisorEnv(ABC):
      +----------+      (observation, reward)      +---------------+
 
     """
-
     @abstractmethod
     def get_observations(self):
         """
@@ -32,32 +31,24 @@ class SupervisorEnv(ABC):
     @abstractmethod
     def step(self, action):
         """
-        Each timestep, the agent choose  an action, and the environment returns
+        Each timestep, the agent chooses  an action, and the environment returns
         the observation, the reward and the state of the problem (done or not).
 
-        Parameters
-        ----------
-        action: The agent's action
-
-        Returns
-        -------
         observation: The observation from the environment
         reward: The amount of reward achieved by the previous action.
         is_done: If the problem is solved
         info: Diagnostic information mostly useful for debugging.
+
+        :param action: The agent's action
+        :return: tuple, (observation, reward, is_done, info)
         """
         pass
 
     @abstractmethod
     def get_reward(self, action):
         """
-        Parameters
-        ----------
-        action: The agent's action
-
-        Returns
-        -------
-        The amount of reward achieved by the previous action.
+        :param action: The agent's action
+        :return: the amount of reward achieved by the previous action.
         """
         pass
 
@@ -66,10 +57,7 @@ class SupervisorEnv(ABC):
         """
         Used to inform the agent that the problem solved.
 
-        Returns
-        -------
-        bool
-           True if the problem have been solved
+        :return: bool, True if the problem have been solved
         """
         pass
 
@@ -78,12 +66,12 @@ class SupervisorEnv(ABC):
         """
         Used to reset the world to an initial state.
 
-        Returns
-        -------
         observation: The observation from the environment
         reward: The amount of reward achieved by the previous action.
-        is_done: If the problem is solved
+        is_done: Whether the problem is solved.
         info: Diagnostic information mostly useful for debugging.
+
+        :return: tuple, (observation, reward, is_done, info)
         """
         pass
 
