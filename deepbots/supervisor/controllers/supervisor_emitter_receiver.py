@@ -6,8 +6,8 @@ from deepbots.supervisor.controllers.supervisor_abstract import \
 
 class SupervisorEmitterReceiver(SupervisorAbstract):
     def __init__(self,
-                 emitter_name='emitter',
-                 receiver_name='receiver',
+                 emitter_name="emitter",
+                 receiver_name="receiver",
                  time_step=None):
 
         super(SupervisorEmitterReceiver, self).__init__(time_step)
@@ -33,8 +33,8 @@ class SupervisorEmitterReceiver(SupervisorAbstract):
 
 class SupervisorCSV(SupervisorEmitterReceiver):
     def __init__(self,
-                 emitter_name='emitter',
-                 receiver_name='receiver',
+                 emitter_name="emitter",
+                 receiver_name="receiver",
                  time_step=None):
         super(SupervisorCSV, self).__init__(emitter_name, receiver_name,
                                             time_step)
@@ -42,13 +42,13 @@ class SupervisorCSV(SupervisorEmitterReceiver):
         self._last_mesage = None
 
     def handle_emitter(self, action):
-        message = (','.join(map(str, action))).encode('utf-8')
+        message = (",".join(map(str, action))).encode("utf-8")
         self.emitter.send(message)
 
     def handle_receiver(self):
         if self.receiver.getQueueLength() > 0:
-            string_message = self.receiver.getData().decode('utf-8')
-            self._last_mesage = string_message.split(',')
+            string_message = self.receiver.getData().decode("utf-8")
+            self._last_mesage = string_message.split(",")
 
             self.receiver.nextPacket()
 

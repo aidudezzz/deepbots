@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 from controller import Supervisor
+
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 
 
@@ -18,8 +19,12 @@ class SupervisorAbstract(SupervisorEnv, ABC):
         self.supervisor.step(self.timestep)
 
         self.do_action(action)
-        return self.get_observations(), self.get_reward(action),\
-            self.is_done(), self.get_info()
+        return (
+            self.get_observations(),
+            self.get_reward(action),
+            self.is_done(),
+            self.get_info(),
+        )
 
     def get_timestep(self):
         return self.timestep

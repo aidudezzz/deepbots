@@ -13,6 +13,7 @@ class RobotController(ABC):
 
     For a simpler RobotController that implements the methods in a basic form inherit the RobotEmitterReceiver class.
     """
+
     def __init__(self, timestep=None):
         """
         The basic robot constructor.

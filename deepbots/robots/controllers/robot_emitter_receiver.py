@@ -9,6 +9,7 @@ class RobotEmitterReceiverList(RobotController):
     Basic implementation of a robot that can emit and receive messages to/from the supervisor in string utf-8 form
     that are comma separated, i.e. a list.
     """
+
     def __init__(self, timestep=None):
         super().__init__(timestep=timestep)
 
@@ -38,9 +39,10 @@ class RobotEmitterReceiverList(RobotController):
             string_message = data
         else:
             raise TypeError(
-                "message must be either a comma-separated string or a 1D list")
+                "message must be either a comma-separated string or a 1D list"
+            )
 
-        string_message = string_message.encode('utf-8')
+        string_message = string_message.encode("utf-8")
         self.emitter.send(string_message)
 
     def handle_receiver(self):
@@ -50,9 +52,9 @@ class RobotEmitterReceiverList(RobotController):
         """
         if self.receiver.getQueueLength() > 0:
             # Receive and decode message from supervisor
-            message = self.receiver.getData().decode('utf-8')
+            message = self.receiver.getData().decode("utf-8")
             # Convert string message into a list
-            message = message.split(',')
+            message = message.split(",")
 
             self.use_message_data(message)
 

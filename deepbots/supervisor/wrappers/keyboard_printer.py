@@ -11,13 +11,13 @@ class KeyboardPrinter:
         observation, reward, isDone, info = self.controller.step(action)
         key = self.keyboard.getKey()
         # DEBUG CONTROLS
-        if key == Keyboard.CONTROL + ord('A'):
+        if key == Keyboard.CONTROL + ord("A"):
             print()
             print("Actions: ", action)
-        if key == Keyboard.CONTROL + ord('R'):
+        if key == Keyboard.CONTROL + ord("R"):
             print()
             print("Rewards: ", reward)
-        if key == Keyboard.CONTROL + ord('Y'):
+        if key == Keyboard.CONTROL + ord("Y"):
             print()
             print("Observations: ", self.controller.observation)
 
@@ -25,7 +25,7 @@ class KeyboardPrinter:
 
     def isDone(self):
         isDone = self.controller.isDone()
-        if (isDone):
+        if isDone:
             print("Done")
         return isDone
 
