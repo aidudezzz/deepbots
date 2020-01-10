@@ -16,16 +16,15 @@ class SupervisorEnv(ABC):
      +----------+      (observation, reward)      +---------------+
 
     """
-
     @abstractmethod
     def get_observations(self):
         """
         Return the observations of the robot. For example, metrics from
         sensors, camera image etc.
 
-        Returns
-        -------
-        An object of observations
+
+
+        :returns: An object of observations
         """
         pass
 
