@@ -23,8 +23,8 @@ class KeyboardPrinter:
 
         return observation, reward, isDone, info
 
-    def isDone(self):
-        isDone = self.controller.isDone()
+    def is_done(self):
+        isDone = self.controller.is_done()
         if isDone:
             print("Done")
         return isDone
