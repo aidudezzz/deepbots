@@ -2,8 +2,8 @@ name: Publish Python on TestPyPi
 
 on:
   push:
-    branches:
-      - dev
+    tags:
+      - 'v*-pre'
 
 jobs:
   build-n-publish:
@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions:checkout@dev
+      - uses: actions/checkout@master
       - name: Set up Python 3.7
-        uses: actions.setup-python@v1
+        uses: actions/setup-python@v1
         with:
           python-version: 3.7
 
@@ -22,11 +22,13 @@ jobs:
           python -m pip install pep517 --user
       - name: Build a binary wheel and a source tarball
         run: >-
-          python -m pep517.build --source --binary --out-dir dist/
+          python -m pep517.build --source --binary --out-dir dist/ ./
 
       - name: Publish distribution to Test PyPi
-        if: startsWith(github.event.ref, 'refs/tags')
-        uses: pypa/gh-action-pypi-publish@dev
+        # if: startsWith(github.event.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@master
         with:
+          user: __token__
+          password: ${{ secrets.pypi_test_password }}
           repository_url: https://test.pypi.org/legacy/
-          pass: ${{ secrets.pypi_test_password }}
+
