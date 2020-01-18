@@ -2,7 +2,7 @@ from abc import abstractmethod
 
 from controller import Supervisor
 
-from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from .supervisor_env import SupervisorEnv
 
 
 class SupervisorEmitterReceiver(SupervisorEnv):

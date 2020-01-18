@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-from .robot_controller import RobotEmitterReceiver
+from .robot_emitter_receiver import RobotEmitterReceiver
 
 
 class RobotEmitterReceiverCSV(RobotEmitterReceiver):
