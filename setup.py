@@ -12,5 +12,6 @@ setup(
     "A wrapper framework for Reinforcement Learning in Webots simulator",
     long_description=readme,
     long_description_content_type="text/markdown",
-    packages=find_packages(),
+    package_dir={'': 'deepbots'},  # Optional
+    packages=find_packages(where='deepbots'),
 )
