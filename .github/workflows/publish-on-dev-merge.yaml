@@ -1,9 +1,7 @@
 name: Publish Python on TestPyPi
 
 on:
-  push:
-    branches:
-      - dev
+  release:
     tags:
       - 'v*-pre'
 
