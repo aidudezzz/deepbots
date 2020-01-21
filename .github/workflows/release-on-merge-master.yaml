@@ -1,13 +1,15 @@
-name: Publish Python on TestPyPi
+name: Release on PyPi
 
 on:
   push:
     tags:
-      - "v*-pre"
+      - |
+        'v*'
+        '!v*-pre'
 
 jobs:
   build-n-publish:
-    name: Publish Python on TestPyPi
+    name: Release on PyPi
     runs-on: ubuntu-latest
 
     steps:
@@ -24,9 +26,8 @@ jobs:
         run: >-
           python -m pep517.build --source --binary --out-dir dist/ ./
 
-      - name: Publish distribution to Test PyPi
+      - name: Publish distribution to PyPi
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
-          password: ${{ secrets.pypi_test_password }}
-          repository_url: https://test.pypi.org/legacy/
+          password: ${{ secrets.pypi_password }}
