@@ -2,6 +2,7 @@ from abc import abstractmethod
 
 from .robot_emitter_receiver import RobotEmitterReceiver
 
+from collections.abc import Iterable
 
 class RobotEmitterReceiverCSV(RobotEmitterReceiver):
     """
@@ -32,6 +33,10 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
         supervisor.
         """
         data = self.create_message()
+
+        assert isinstance(data, Iterable), \
+            "The action object should be Iterable"
+
         string_message = ""
         # message can either be a list that needs to be converted in a string or a straight-up string
         if type(data) is list:

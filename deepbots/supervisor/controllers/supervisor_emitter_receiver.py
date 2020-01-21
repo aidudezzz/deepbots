@@ -4,6 +4,8 @@ from controller import Supervisor
 
 from .supervisor_env import SupervisorEnv
 
+from collections.abc import Iterable
+
 
 class SupervisorEmitterReceiver(SupervisorEnv):
     def __init__(
@@ -61,6 +63,9 @@ class SupervisorCSV(SupervisorEmitterReceiver):
         self._last_mesage = None
 
     def handle_emitter(self, action):
+        assert isinstance(action, Iterable), \
+            "The action object should be Iterable"
+
         message = (",".join(map(str, action))).encode("utf-8")
         self.emitter.send(message)
 
