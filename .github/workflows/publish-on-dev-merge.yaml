@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - dev
+    tags:
+      - 'v*-pre'
 
 jobs:
   build-n-publish:
@@ -25,7 +27,7 @@ jobs:
           python -m pep517.build --source --binary --out-dir dist/ ./
 
       - name: Publish distribution to Test PyPi
-        if: startsWith(github.event.ref, 'refs/tags')
+        # if: startsWith(github.event.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@master
         with:
           repository_url: https://test.pypi.org/legacy/
