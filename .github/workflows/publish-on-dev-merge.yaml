@@ -30,5 +30,7 @@ jobs:
         # if: startsWith(github.event.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@master
         with:
-          repository_url: https://test.pypi.org/legacy/
+          user: __token__
           pass: ${{ secrets.pypi_test_password }}
+          repository_url: https://test.pypi.org/legacy/
+
