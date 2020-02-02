@@ -65,7 +65,7 @@ agent chooses an `action`, and the environment returns an `observation` and a
 `observation`." 
 
 <p align="center">
-    <img src="https://github.com/ManosMagnus/deepbots/blob/readme/doc/img/agent_env_loop.svg">
+    <img src="https://github.com/aidudezzz/deepbots/blob/dev/doc/img/agent_env_loop.svg">
 </p>
 
 Deepbots follows this exact agent-environment loop with the only difference being
@@ -80,7 +80,7 @@ provide different wrappers for a wide range of robots. Currently, the communicat
 between the `Supervisor` and the `Robot` is achieved via an `emitter` and a `receiver`. 
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ManosMagnus/deepbots/readme/doc/img/deepbots_overview.png">
+    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/deepbots_overview.png">
 </p>
 
 On one hand, the `emitter` is an entity, which is provided by Webots,
@@ -97,7 +97,7 @@ expected, the Robot does not know the euclidean distance, only the Supervisor
 can calculate it, because it has access to all entities in the World.
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ManosMagnus/deepbots/readme/doc/img/workflow_diagram.png">
+    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/workflow_diagram.png">
 </p>
 
 ### Abstraction Levels
