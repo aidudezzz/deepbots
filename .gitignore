@@ -1,5 +1,5 @@
 # General ignore
-_*
+_requirements.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,5 +1,7 @@
 from setuptools import find_packages, setup
 
+from deepbots import __version__
+
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
@@ -7,7 +9,7 @@ setup(
     name="deepbots",
     author="aidudezzz",
     author_email="deepbots@protonmail.com",
-    version="0.0.0.11-pre",
+    version=__version__,
     description=
     "A wrapper framework for Reinforcement Learning in Webots simulator",
     long_description=readme,
