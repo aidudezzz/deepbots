@@ -60,7 +60,7 @@ class SupervisorCSV(SupervisorEmitterReceiver):
             emitter_name, receiver_name, time_step
         )
 
-        self._last_mesage = None
+        self._last_message = None
 
     def handle_emitter(self, action):
         assert isinstance(action, Iterable), \
@@ -72,8 +72,8 @@ class SupervisorCSV(SupervisorEmitterReceiver):
     def handle_receiver(self):
         if self.receiver.getQueueLength() > 0:
             string_message = self.receiver.getData().decode("utf-8")
-            self._last_mesage = string_message.split(",")
+            self._last_message = string_message.split(",")
 
             self.receiver.nextPacket()
 
-        return self._last_mesage
+        return self._last_message
