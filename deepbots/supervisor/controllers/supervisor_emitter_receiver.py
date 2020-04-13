@@ -1,16 +1,16 @@
 from abc import abstractmethod
+from collections.abc import Iterable
 
 from controller import Supervisor
 
 from .supervisor_env import SupervisorEnv
 
-from collections.abc import Iterable
-
 
 class SupervisorEmitterReceiver(SupervisorEnv):
-    def __init__(
-        self, emitter_name="emitter", receiver_name="receiver", time_step=None
-    ):
+    def __init__(self,
+                 emitter_name="emitter",
+                 receiver_name="receiver",
+                 time_step=None):
 
         super(SupervisorEmitterReceiver, self).__init__()
 
@@ -53,12 +53,12 @@ class SupervisorEmitterReceiver(SupervisorEnv):
 
 
 class SupervisorCSV(SupervisorEmitterReceiver):
-    def __init__(
-        self, emitter_name="emitter", receiver_name="receiver", time_step=None
-    ):
-        super(SupervisorCSV, self).__init__(
-            emitter_name, receiver_name, time_step
-        )
+    def __init__(self,
+                 emitter_name="emitter",
+                 receiver_name="receiver",
+                 time_step=None):
+        super(SupervisorCSV, self).__init__(emitter_name, receiver_name,
+                                            time_step)
 
         self._last_mesage = None
 
