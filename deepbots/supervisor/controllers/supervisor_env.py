@@ -31,8 +31,9 @@ class SupervisorEnv(ABC):
     @abstractmethod
     def step(self, action):
         """
-        Each timestep, the agent chooses  an action, and the environment returns
-        the observation, the reward and the state of the problem (done or not).
+        Each timestep, the agent chooses  an action, and the environment
+        returns the observation, the reward and the state of the problem (done
+        or not).
 
         observation: The observation from the environment
         reward: The amount of reward achieved by the previous action.
