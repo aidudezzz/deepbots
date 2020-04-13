@@ -3,9 +3,9 @@ name: Release on PyPi
 on:
   push:
     tags:
-      - |
-        'v*'
-        '!v*-pre'
+      - "v*"
+    tags-ignore:
+      - "!v*-pre"
 
 jobs:
   build-n-publish:
