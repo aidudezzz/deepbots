@@ -1,7 +1,9 @@
 from controller import Keyboard
 
+from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 
-class KeyboardPrinter:
+
+class KeyboardPrinter(SupervisorEnv):
     def __init__(self, controller):
         self.controller = controller
         self.keyboard = Keyboard()
@@ -28,6 +30,15 @@ class KeyboardPrinter:
         if isDone:
             print("Done")
         return isDone
+
+    def get_observations(self):
+        return self.controller.get_observations()
+
+    def get_reward(self, action):
+        return self.controller.get_reward(action)
+
+    def get_info(self):
+        return self.controller.get_info()
 
     def reset(self):
         print("RESET")
