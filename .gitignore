@@ -1,4 +1,5 @@
 # General ignore
+_env/
 _requirements.txt
 
 # Byte-compiled / optimized / DLL files
