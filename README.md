@@ -8,6 +8,13 @@ most used interface between the actual application and the RL algorithm.
 Deepbots is a framework which follows the OpenAI gym environment interface
 logic in order to be used by Webots applications.
 
+## Installation
+
+Deepbots can be installed through the package installer 
+[pip](https://pip.pypa.io/en/stable/) running the following command:
+
+`pip install deepbots`
+
 ## How it works
 
 First of all let's set up a simple glossary:
