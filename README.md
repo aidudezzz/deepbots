@@ -1,7 +1,7 @@
 # deepbots
 
-Deepbots is a simple framework which is used as "middleware" between the
-[Webots](https://cyberbotics.com/) robot simulator and Reinforcement Learning
+Deepbots is a simple framework which is used as "middleware" between the free and open-source
+[Cyberbotics' Webots](https://cyberbotics.com/) robot simulator and Reinforcement Learning
 algorithms. When it comes to Reinforcement Learning the
 [OpenAI gym](https://gym.openai.com/) environment has been established as the
 most used interface between the actual application and the RL algorithm.
@@ -10,10 +10,37 @@ logic in order to be used by Webots applications.
 
 ## Installation
 
+### Prerequisites
+
+1. [Install Webots](https://cyberbotics.com/doc/guide/installing-webots)
+    - [Windows](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-windows)
+    - [Linux](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-linux)
+    - [macOS](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-macos)
+2. [Install Python version 3.X](https://www.python.org/downloads/) (please refer to 
+[Using Python](https://cyberbotics.com/doc/guide/using-python#introduction) to select the proper Python version for 
+your system) 
+3. Follow the [Using Python](https://cyberbotics.com/doc/guide/using-python) guide provided by Webots
+4. Webots provides a basic code editor, but if you want to use [PyCharm](https://www.jetbrains.com/pycharm/) as your 
+IDE refer to [using PyCharm IDE](https://cyberbotics.com/doc/guide/using-your-ide#pycharm) provided by Webots
+
+
+You will probably also need a backend library to implement the neural networks, such as 
+[PyTorch](https://pytorch.org/) or [TensorFlow](https://www.tensorflow.org/). Deepbots interfaces
+with RL agents using the OpenAI gym logic, so it can work with any backend library you choose to implement the agent 
+with and any agent that already works with gym.
+
+### Install deepbots
+
 Deepbots can be installed through the package installer 
 [pip](https://pip.pypa.io/en/stable/) running the following command:
 
 `pip install deepbots`
+
+## Official resources
+
+* On [the deepbots-tutorials repository](https://github.com/aidudezzz/deepbots-tutorials) you can find the official tutorials for deepbots
+* On [the deepworlds repository](https://github.com/aidudezzz/deepworlds) you can find examples of deepbots being used.
+<br>Feel free to contribute your own!
 
 ## How it works
 
@@ -70,7 +97,7 @@ documentation, the framework follows the classic “agent-environment loop”.
 which returns an initial `observation`."
 
 <p align="center">
-    <img src="https://github.com/aidudezzz/deepbots/blob/dev/doc/img/agent_env_loop.svg">
+    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/agent_env_loop.svg">
 </p>
 
 Deepbots follows this exact agent-environment loop with the only difference
