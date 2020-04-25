@@ -60,8 +60,6 @@ class SupervisorCSV(SupervisorEmitterReceiver):
         super(SupervisorCSV, self).__init__(emitter_name, receiver_name,
                                             time_step)
 
-        self._last_message = None
-
     def handle_emitter(self, action):
         assert isinstance(action, Iterable), \
             "The action object should be Iterable"
@@ -72,8 +70,7 @@ class SupervisorCSV(SupervisorEmitterReceiver):
     def handle_receiver(self):
         if self.receiver.getQueueLength() > 0:
             string_message = self.receiver.getData().decode("utf-8")
-            self._last_message = string_message.split(",")
-
             self.receiver.nextPacket()
-
-        return self._last_message
+            return string_message.split(",")
+        else:
+            return None
