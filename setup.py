@@ -4,7 +4,7 @@ DESCRIPTION = "A wrapper framework for Reinforcement Learning in Webots \
     simulator"
 
 with open("README.md", "r", encoding="utf-8") as readme_file:
-    readme = readme_file.read(encoding='utf-8')
+    readme = readme_file.read()
 
 setup(
     name="deepbots",
