@@ -51,7 +51,7 @@ Deepbots can be installed through the package installer
 
 ## Citation
 
-Conference paper (AIAI2010):
+Conference paper (AIAI2020):
 https://link.springer.com/chapter/10.1007/978-3-030-49186-4_6
 
 ```bibtex
