@@ -1,10 +1,10 @@
 # deepbots
 
-Deepbots is a simple framework which is used as "middleware" between the free and open-source
-[Cyberbotics' Webots](https://cyberbotics.com/) robot simulator and Reinforcement Learning
-algorithms. When it comes to Reinforcement Learning the
-[OpenAI gym](https://gym.openai.com/) environment has been established as the
-most used interface between the actual application and the RL algorithm.
+Deepbots is a simple framework which is used as "middleware" between the free
+and open-source [Cyberbotics' Webots](https://cyberbotics.com/) robot simulator
+and Reinforcement Learning algorithms. When it comes to Reinforcement Learning
+the [OpenAI gym](https://gym.openai.com/) environment has been established as
+the most used interface between the actual application and the RL algorithm.
 Deepbots is a framework which follows the OpenAI gym environment interface
 logic in order to be used by Webots applications.
 
@@ -13,34 +13,67 @@ logic in order to be used by Webots applications.
 ### Prerequisites
 
 1. [Install Webots](https://cyberbotics.com/doc/guide/installing-webots)
-    - [Windows](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-windows)
-    - [Linux](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-linux)
-    - [macOS](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-macos)
-2. [Install Python version 3.X](https://www.python.org/downloads/) (please refer to 
-[Using Python](https://cyberbotics.com/doc/guide/using-python#introduction) to select the proper Python version for 
-your system) 
-3. Follow the [Using Python](https://cyberbotics.com/doc/guide/using-python) guide provided by Webots
-4. Webots provides a basic code editor, but if you want to use [PyCharm](https://www.jetbrains.com/pycharm/) as your 
-IDE refer to [using PyCharm IDE](https://cyberbotics.com/doc/guide/using-your-ide#pycharm) provided by Webots
+   - [Windows](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-windows)
+   - [Linux](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-linux)
+   - [macOS](https://cyberbotics.com/doc/guide/installation-procedure#installation-on-macos)
+2. [Install Python version 3.X](https://www.python.org/downloads/) (please
+   refer to
+   [Using Python](https://cyberbotics.com/doc/guide/using-python#introduction)
+   to select the proper Python version for your system)
+3. Follow the [Using Python](https://cyberbotics.com/doc/guide/using-python)
+   guide provided by Webots
+4. Webots provides a basic code editor, but if you want to use
+   [PyCharm](https://www.jetbrains.com/pycharm/) as your IDE refer to
+   [using PyCharm IDE](https://cyberbotics.com/doc/guide/using-your-ide#pycharm)
+   provided by Webots
 
-
-You will probably also need a backend library to implement the neural networks, such as 
-[PyTorch](https://pytorch.org/) or [TensorFlow](https://www.tensorflow.org/). Deepbots interfaces
-with RL agents using the OpenAI gym logic, so it can work with any backend library you choose to implement the agent 
-with and any agent that already works with gym.
+You will probably also need a backend library to implement the neural networks,
+such as [PyTorch](https://pytorch.org/) or
+[TensorFlow](https://www.tensorflow.org/). Deepbots interfaces with RL agents
+using the OpenAI gym logic, so it can work with any backend library you choose
+to implement the agent with and any agent that already works with gym.
 
 ### Install deepbots
 
-Deepbots can be installed through the package installer 
+Deepbots can be installed through the package installer
 [pip](https://pip.pypa.io/en/stable/) running the following command:
 
 `pip install deepbots`
 
 ## Official resources
 
-* On [the deepbots-tutorials repository](https://github.com/aidudezzz/deepbots-tutorials) you can find the official tutorials for deepbots
-* On [the deepworlds repository](https://github.com/aidudezzz/deepworlds) you can find examples of deepbots being used.
-<br>Feel free to contribute your own!
+- On
+  [the deepbots-tutorials repository](https://github.com/aidudezzz/deepbots-tutorials)
+  you can find the official tutorials for deepbots
+- On [the deepworlds repository](https://github.com/aidudezzz/deepworlds) you
+  can find examples of deepbots being used. <br>Feel free to contribute your
+  own!
+
+## Citation
+
+Conference paper (AIAI2010):
+https://link.springer.com/chapter/10.1007/978-3-030-49186-4_6
+
+```bibtex
+@InProceedings{10.1007/978-3-030-49186-4_6,
+    author="Kirtas, M.
+    and Tsampazis, K.
+    and Passalis, N.
+    and Tefas, A.",
+    editor="Maglogiannis, Ilias
+    and Iliadis, Lazaros
+    and Pimenidis, Elias",
+    title="Deepbots: A Webots-Based Deep Reinforcement Learning Framework for Robotics",
+    booktitle="Artificial Intelligence Applications and Innovations",
+    year="2020",
+    publisher="Springer International Publishing",
+    address="Cham",
+    pages="64--75",
+    abstract="Deep Reinforcement Learning (DRL) is increasingly used to train robots to perform complex and delicate tasks, while the development of realistic simulators contributes to the acceleration of research on DRL for robotics. However, it is still not straightforward to employ such simulators in the typical DRL pipeline, since their steep learning curve and the enormous amount of development required to interface with DRL methods significantly restrict their use by researchers. To overcome these limitations, in this work we present an open-source framework that combines an established interface used by DRL researchers, the OpenAI Gym interface, with the state-of-the-art Webots robot simulator in order to provide a standardized way to employ DRL in various robotics scenarios. Deepbots aims to enable researchers to easily develop DRL methods in Webots by handling all the low-level details and reducing the required development effort. The effectiveness of the proposed framework is demonstrated through code examples, as well as using three use cases of varying difficulty.",
+    isbn="978-3-030-49186-4"
+}
+
+```
 
 ## How it works
 
