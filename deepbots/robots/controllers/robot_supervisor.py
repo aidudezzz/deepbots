@@ -7,11 +7,31 @@ from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 
 class RobotSupervisor(SupervisorEnv):
     """
-        step(action) (+ run or similar)
-        create_message() analogous method (to be named) - This will be inside the get_observations implementation anyway
-        use_message_data() analogous method (to be named) - Renamed to apply_action(action)
-        reset(), this one will use the new reset procedure of Webots R2020 providing
-            generic reset functionality for the user
+    The RobotSupervisor class implements both a robot controller and a supervisor RL environment.
+    This class can be used when there is no need to separate the Robot from the Supervisor, or
+    the observations of the robot are too big to be packaged in messages, e.g. high resolution
+    images from a camera, that introduce a bottleneck and reduce performance significantly.
+
+    Reset method
+    This class contains a default implementation of reset() that uses Webots-provided methods to reset
+    the world to its starting state.
+    *Note that this works properly only with Webots versions >R2020b and must be
+    overridden with a custom reset method when using earlier versions. It is backwards compatible
+    due to the fact that the new reset method gets overridden by whatever the user has previously
+    implemented, so an old supervisor such as SupervisorCSV can be migrated easily to use this class.
+
+    The user needs to implement the regular methods (reward(), get_observations(), etc.) from
+    SupervisorEnv according to their use-case in addition to the methods get_default_observation()
+    and apply_action() introduced here.
+
+    get_default_observation():
+    This method should be implemented to return a per use-case default observation that is used when resetting.
+
+    apply_action():
+
+    (similar to use_message_data() of RobotEmitterReceiverCSV)
+    This method takes an action argument and translates it to a robot action, e.g. motor speeds.
+    Note that apply_action() is called during step().
     """
     def __init__(self, time_step=None):
         super(RobotSupervisor, self).__init__()
@@ -27,7 +47,15 @@ class RobotSupervisor(SupervisorEnv):
         return self.timestep
 
     def step(self, action):
-        self.robotSupervisor.step(self.timestep)
+        """
+        Default step implementation that contains a Webots step conditional for
+        terminating properly.
+
+        :param action: The agent's action
+        :return: tuple, (observation, reward, is_done, info)
+        """
+        if self.robotSupervisor.step(self.timestep) == -1:
+            exit()
 
         self.apply_action(action)
         return (
@@ -38,6 +66,15 @@ class RobotSupervisor(SupervisorEnv):
         )
 
     def reset(self):
+        """
+        Default implementation of reset method, using Webots-provided methods.
+        *Note that this works properly only with Webots versions >R2020b and must be
+        overridden with a custom reset method when using earlier versions. It is backwards compatible
+        due to the fact that the new reset method gets overridden by whatever the user has previously
+        implemented, so an old supervisor such as SupervisorCSV can be migrated easily to use this class.
+
+        :return: default implementation provided by get_default_observation() implementation
+        """
         self.robotSupervisor.simulationReset()
         self.robotSupervisor.simulationResetPhysics()
         return self.get_default_observation()
@@ -45,8 +82,9 @@ class RobotSupervisor(SupervisorEnv):
     @abstractmethod
     def get_default_observation(self):
         """
-        This method should return a default observation for e.g.
-        after resetting.
+        This method should be implemented to return a default/starting observation
+        that is use-case dependant. It is mainly used by the reset implementation above.
+
         :return: list, contains default agent observation
         """
         pass
@@ -55,7 +93,8 @@ class RobotSupervisor(SupervisorEnv):
     def apply_action(self, action):
         """
         This method should be implemented to apply whatever actions the
-        action argument contains.
+        action argument contains on the robot, depending on the use-case.
+
         :param action: list, containing action data
         """
         pass
