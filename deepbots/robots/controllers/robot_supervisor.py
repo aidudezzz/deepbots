@@ -28,7 +28,6 @@ class RobotSupervisor(SupervisorEnv):
     This method should be implemented to return a per use-case default observation that is used when resetting.
 
     apply_action():
-
     (similar to use_message_data() of RobotEmitterReceiverCSV)
     This method takes an action argument and translates it to a robot action, e.g. motor speeds.
     Note that apply_action() is called during step().
