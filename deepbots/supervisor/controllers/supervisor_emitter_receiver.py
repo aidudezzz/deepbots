@@ -48,7 +48,7 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         due to the fact that the new reset method gets overridden by whatever the user has previously
         implemented, so an old supervisor such as SupervisorCSV can be migrated easily to use this class.
 
-        :return: default implementation provided by get_default_observation() implementation
+        :return: default observation provided by get_default_observation() implementation
         """
         self.supervisor.simulationReset()
         self.supervisor.simulationResetPhysics()
