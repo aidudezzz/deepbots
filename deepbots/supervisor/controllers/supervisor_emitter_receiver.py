@@ -1,8 +1,6 @@
 from abc import abstractmethod
 from collections.abc import Iterable
 
-from controller import Supervisor
-
 from .supervisor_env import SupervisorEnv
 
 
@@ -14,13 +12,13 @@ class SupervisorEmitterReceiver(SupervisorEnv):
 
         super(SupervisorEmitterReceiver, self).__init__()
 
-        self.supervisor = Supervisor()
-
         if time_step is None:
             self.timestep = int(self.supervisor.getBasicTimeStep())
         else:
             self.timestep = time_step
 
+        self.emitter = None
+        self.receiver = None
         self.initialize_comms(emitter_name, receiver_name)
 
     def initialize_comms(self, emitter_name, receiver_name):
