@@ -1,7 +1,5 @@
 from abc import abstractmethod
 
-from controller import Supervisor
-
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 
 
@@ -35,10 +33,8 @@ class RobotSupervisor(SupervisorEnv):
     def __init__(self, time_step=None):
         super(RobotSupervisor, self).__init__()
 
-        self.robotSupervisor = Supervisor()
-
         if time_step is None:
-            self.timestep = int(self.robotSupervisor.getBasicTimeStep())
+            self.timestep = int(self.supervisor.getBasicTimeStep())
         else:
             self.timestep = time_step
 
@@ -53,7 +49,7 @@ class RobotSupervisor(SupervisorEnv):
         :param action: The agent's action
         :return: tuple, (observation, reward, is_done, info)
         """
-        if self.robotSupervisor.step(self.timestep) == -1:
+        if self.supervisor.step(self.timestep) == -1:
             exit()
 
         self.apply_action(action)
@@ -63,30 +59,6 @@ class RobotSupervisor(SupervisorEnv):
             self.is_done(),
             self.get_info(),
         )
-
-    def reset(self):
-        """
-        Default implementation of reset method, using Webots-provided methods.
-        *Note that this works properly only with Webots versions >R2020b and must be
-        overridden with a custom reset method when using earlier versions. It is backwards compatible
-        due to the fact that the new reset method gets overridden by whatever the user has previously
-        implemented, so an old supervisor such as SupervisorCSV can be migrated easily to use this class.
-
-        :return: default observation provided by get_default_observation() implementation
-        """
-        self.robotSupervisor.simulationReset()
-        self.robotSupervisor.simulationResetPhysics()
-        return self.get_default_observation()
-
-    @abstractmethod
-    def get_default_observation(self):
-        """
-        This method should be implemented to return a default/starting observation
-        that is use-case dependant. It is mainly used by the reset implementation above.
-
-        :return: list, contains default agent observation
-        """
-        pass
 
     @abstractmethod
     def apply_action(self, action):
