@@ -1,8 +1,6 @@
 from abc import abstractmethod
 from collections.abc import Iterable
 
-from controller import Supervisor
-
 from .supervisor_env import SupervisorEnv
 
 
@@ -14,13 +12,13 @@ class SupervisorEmitterReceiver(SupervisorEnv):
 
         super(SupervisorEmitterReceiver, self).__init__()
 
-        self.supervisor = Supervisor()
-
         if time_step is None:
             self.timestep = int(self.supervisor.getBasicTimeStep())
         else:
             self.timestep = time_step
 
+        self.emitter = None
+        self.receiver = None
         self.initialize_comms(emitter_name, receiver_name)
 
     def initialize_comms(self, emitter_name, receiver_name):
@@ -39,30 +37,6 @@ class SupervisorEmitterReceiver(SupervisorEnv):
             self.is_done(),
             self.get_info(),
         )
-
-    def reset(self):
-        """
-        Default implementation of reset method, using Webots-provided methods.
-        *Note that this works properly only with Webots versions >R2020b and must be
-        overridden with a custom reset method when using earlier versions. It is backwards compatible
-        due to the fact that the new reset method gets overridden by whatever the user has previously
-        implemented, so an old supervisor such as SupervisorCSV can be migrated easily to use this class.
-
-        :return: default observation provided by get_default_observation() implementation
-        """
-        self.supervisor.simulationReset()
-        self.supervisor.simulationResetPhysics()
-        return self.get_default_observation()
-
-    @abstractmethod
-    def get_default_observation(self):
-        """
-        This method should be implemented to return a default/starting observation
-        that is use-case dependant. It is mainly used by the reset implementation above.
-
-        :return: list, contains default agent observation
-        """
-        pass
 
     @abstractmethod
     def handle_emitter(self, action):

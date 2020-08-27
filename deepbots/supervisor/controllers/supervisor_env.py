@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from controller import Supervisor
+
 
 class SupervisorEnv(ABC):
     """
@@ -16,6 +18,10 @@ class SupervisorEnv(ABC):
      +----------+      (observation, reward)      +---------------+
 
     """
+
+    def __init__(self):
+        self.supervisor = Supervisor()
+
     @abstractmethod
     def get_observations(self):
         """
@@ -62,17 +68,30 @@ class SupervisorEnv(ABC):
         """
         pass
 
-    @abstractmethod
     def reset(self):
         """
         Used to reset the world to an initial state.
 
-        observation: The observation from the environment
-        reward: The amount of reward achieved by the previous action.
-        is_done: Whether the problem is solved.
-        info: Diagnostic information mostly useful for debugging.
+        Default implementation of reset method, using Webots-provided methods.
 
-        :return: tuple, (observation, reward, is_done, info)
+        *Note that this works properly only with Webots versions >R2020b and must be
+        overridden with a custom reset method when using earlier versions. It is backwards compatible
+        due to the fact that the new reset method gets overridden by whatever the user has previously
+        implemented, so an old supervisor such as SupervisorCSV can be migrated easily to use this class.
+
+        :return: default observation provided by get_default_observation() implementation
+        """
+        self.supervisor.simulationReset()
+        self.supervisor.simulationResetPhysics()
+        return self.get_default_observation()
+
+    @abstractmethod
+    def get_default_observation(self):
+        """
+        This method should be implemented to return a default/starting observation
+        that is use-case dependant. It is mainly used by the reset implementation above.
+
+        :return: list-like, contains default agent observation
         """
         pass
 
