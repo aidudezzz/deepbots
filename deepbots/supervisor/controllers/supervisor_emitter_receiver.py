@@ -28,7 +28,8 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         return self.emitter, self.receiver
 
     def step(self, action):
-        self.supervisor.step(self.timestep)
+        if self.supervisor.step(self.timestep) == -1:
+            exit()
 
         self.handle_emitter(action)
         return (
