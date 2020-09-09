@@ -85,7 +85,6 @@ class SupervisorEnv(ABC):
         self.supervisor.simulationResetPhysics()
         return self.get_default_observation()
 
-    @abstractmethod
     def get_default_observation(self):
         """
         This method should be implemented to return a default/starting observation
@@ -93,7 +92,7 @@ class SupervisorEnv(ABC):
 
         :return: list-like, contains default agent observation
         """
-        pass
+        return NotImplementedError
 
     @abstractmethod
     def get_info(self):
