@@ -3,7 +3,7 @@ name: Publish Python on TestPyPi
 on:
   push:
     tags:
-      - "v*-pre"
+      - "v*-dev[0-9]"
 
 jobs:
   build-n-publish:

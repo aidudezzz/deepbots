@@ -39,5 +39,6 @@ repos:
     rev: v2.4.0
     hooks:
       - id: trailing-whitespace
+        files: ^deepbots/
       - id: end-of-file-fixer
       - id: debug-statements
