@@ -10,7 +10,7 @@ setup(
     name="deepbots",
     author="aidudezzz",
     author_email="deepbots@protonmail.com",
-    version="0.1.2",
+    version="0.1.3-dev0",
     description=DESCRIPTION,
     long_description=readme,
     long_description_content_type="text/markdown",
