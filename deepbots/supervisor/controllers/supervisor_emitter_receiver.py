@@ -1,6 +1,6 @@
 from collections.abc import Iterable
 
-from .supervisor_env import SupervisorEnv
+from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 
 
 class SupervisorEmitterReceiver(SupervisorEnv):
@@ -42,6 +42,7 @@ class SupervisorEmitterReceiver(SupervisorEnv):
             supervisor node
         :param receiver_name: The name of the receiver device on the
             supervisor node
+        :return: The initialized emitter and receiver references
         """
         emitter = self.getEmitter(emitter_name)
         receiver = self.getReceiver(receiver_name)
