@@ -1,6 +1,7 @@
 from collections.abc import Iterable
 
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from controller import Supervisor
 
 
 class SupervisorEmitterReceiver(SupervisorEnv):
@@ -61,7 +62,7 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         :return: (observations, reward, done, info) as provided by the
             corresponding methods as implemented for the use-case
         """
-        if self.step(self.timestep) == -1:
+        if super(Supervisor, self).step(self.timestep) == -1:
             exit()
 
         self.handle_emitter(action)
