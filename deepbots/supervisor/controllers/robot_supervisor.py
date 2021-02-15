@@ -1,16 +1,15 @@
-from abc import abstractmethod
-
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 
 
 class RobotSupervisor(SupervisorEnv):
     """
     The RobotSupervisor class implements both a robot controller and a
-    supervisor RL environment. This class can be used when there is no
-    need to separate the Robot from the Supervisor, or the observations of
-    the robot are too big to be packaged in messages, e.g. high resolution
-    images from a camera, that introduce a bottleneck and reduce
-    performance significantly.
+    supervisor RL environment, referred to as Robot-Supervisor scheme.
+
+    This class can be used when there is no need to separate the Robot
+    from the Supervisor, or the observations of the robot are too big
+    to be packaged in messages, e.g. high resolution images from a camera,
+    that introduce a bottleneck and reduce performance significantly.
 
     Controllers that inherit this method *must* run on Robot nodes
     that have supervisor privileges.
@@ -30,22 +29,29 @@ class RobotSupervisor(SupervisorEnv):
         super(RobotSupervisor, self).__init__()
 
         if time_step is None:
-            self.timestep = int(self.supervisor.getBasicTimeStep())
+            self.timestep = int(self.getBasicTimeStep())
         else:
             self.timestep = time_step
 
     def get_timestep(self):
+        # TODO maybe remove this altogether and make self.timestep
+        #  a pythonic class property. Print deprecation warning for
+        #  next version?
         return self.timestep
 
     def step(self, action):
         """
-        Default step implementation that contains a Webots step conditional
-        for terminating properly.
+        The basic step method that steps the controller,
+        calls the method that applies the action on the robot
+        and returns the (observations, reward, done, info) object.
 
-        :param action: The agent's action
-        :return: tuple, (observation, reward, is_done, info)
+        :param action: Whatever the use-case uses as an action, e.g.
+            an integer representing discrete actions
+        :type action: Defined by the implementation of handle_emitter
+        :return: tuple, (observations, reward, done, info) as provided by the
+            corresponding methods as implemented for the use-case
         """
-        if self.supervisor.step(self.timestep) == -1:
+        if self.step(self.timestep) == -1:
             exit()
 
         self.apply_action(action)
@@ -56,7 +62,6 @@ class RobotSupervisor(SupervisorEnv):
             self.get_info(),
         )
 
-    @abstractmethod
     def apply_action(self, action):
         """
         This method should be implemented to apply whatever actions the
@@ -71,4 +76,4 @@ class RobotSupervisor(SupervisorEnv):
 
         :param action: list, containing action data
         """
-        pass
+        raise NotImplementedError
