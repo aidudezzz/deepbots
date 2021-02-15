@@ -1,46 +1,28 @@
-from abc import ABC, abstractmethod
-
+import gym
 from controller import Supervisor
 
 
-class SupervisorEnv(ABC):
+class SupervisorEnv(Supervisor, gym.Env):
     """
-    This class represents the basic template which contains the necessary
-    methods to train a reinforcement learning algorithm. The interface class
-    follows the gym interface which is standardized in many reinforcement
-    learning algorithms. The OpenAI gym environment can be described by the
-    following figure:
+    This class is the highest class in deepbots class hierarchy, inheriting
+    both the Webots Supervisor controller and the basic gym.Env.
 
-    +----------+             (action)            +---------------+
-    |          |-------------------------------->|               |
-    |   Agent  |                                 | SupervisorEnv |
-    |          |<--------------------------------|               |
-    +----------+      (observation, reward)      +---------------+
+    Refer to gym.Env documentation on how to implement a custom gym.Env
+    for additional functionality.
+
+    This class contains abstract methods that guide the development process
+    for users that want to implement a simple environment.
 
     This class is not intended for user usage, but to provide a common
     interface for all provided supervisor classes and make them
     compatible with reinforcement learning agents that work with
     the gym interface. Moreover, a problem-agnostic reset method is
-    provided. Please use any of the children supervisor  classes to be
-    inherited by your own classes, such as the RobotSupervisor class.
+    provided. Please use any of the children supervisor classes to be
+    inherited by your own class, such as the RobotSupervisor class.
     Nevertheless, advanced users can inherit this class to create
     their own supervisor classes if they wish.
     """
 
-    def __init__(self):
-        self.supervisor = Supervisor()
-
-    @abstractmethod
-    def get_observations(self):
-        """
-        Return the observations of the robot. For example, metrics from
-        sensors, a camera image, etc.
-
-        :returns: An object of observations
-        """
-        pass
-
-    @abstractmethod
     def step(self, action):
         """
         On each timestep, the agent chooses an action for the previous
@@ -48,34 +30,18 @@ class SupervisorEnv(ABC):
         observation, *state_t+1*, the reward and whether the episode
         is done or not.
 
+        Each of the value returned is produced by implementations of
+        other abstract methods defined below.
+
         observation: The next observation from the environment
         reward: The amount of reward awarded on this step
         is_done: Whether the episode is done
-        info: Diagnostic information mostly useful for debugging.
+        info: Diagnostic information mostly useful for debugging
 
         :param action: The agent's action
         :return: tuple, (observation, reward, is_done, info)
         """
-        pass
-
-    @abstractmethod
-    def get_reward(self, action):
-        """
-        Calculates and returns the reward for this step.
-
-        :param action: The agent's action
-        :return: The amount of reward awarded on this step
-        """
-        pass
-
-    @abstractmethod
-    def is_done(self):
-        """
-        Used to inform the agent that the problem is solved.
-
-        :return: bool, True if the episode is done
-        """
-        pass
+        raise NotImplementedError
 
     def reset(self):
         """
@@ -93,8 +59,9 @@ class SupervisorEnv(ABC):
 
         :return: default observation provided by get_default_observation()
         """
-        self.supervisor.simulationReset()
-        self.supervisor.simulationResetPhysics()
+        self.simulationReset()
+        self.simulationResetPhysics()
+        super().step(int(self.getBasicTimeStep()))
         return self.get_default_observation()
 
     def get_default_observation(self):
@@ -105,12 +72,46 @@ class SupervisorEnv(ABC):
 
         :return: list-like, contains default agent observation
         """
-        return NotImplementedError
+        raise NotImplementedError
 
-    @abstractmethod
+    def get_observations(self):
+        """
+        Return the observations of the robot. For example, metrics from
+        sensors, a camera image, etc.
+
+        This method is use-case specific and needs to be implemented
+        by the user.
+
+        :returns: An object of observations
+        """
+        raise NotImplementedError
+
+    def get_reward(self, action):
+        """
+        Calculates and returns the reward for this step.
+
+        This method is use-case specific and needs to be implemented
+        by the user.
+
+        :param action: The agent's action
+        :return: The amount of reward awarded on this step
+        """
+        raise NotImplementedError
+
+    def is_done(self):
+        """
+        Used to inform the agent that the problem is solved.
+
+        This method is use-case specific and needs to be implemented
+        by the user.
+
+        :return: bool, True if the episode is done
+        """
+        raise NotImplementedError
+
     def get_info(self):
         """
         This method can be implemented to return any diagnostic
         information on each step, e.g. for debugging purposes.
         """
-        pass
+        raise NotImplementedError
