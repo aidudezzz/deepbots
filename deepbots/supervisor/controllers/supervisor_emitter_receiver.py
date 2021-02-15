@@ -1,6 +1,6 @@
 from collections.abc import Iterable
 
-from .supervisor_env import SupervisorEnv
+from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 
 
 class SupervisorEmitterReceiver(SupervisorEnv):
@@ -10,7 +10,9 @@ class SupervisorEmitterReceiver(SupervisorEnv):
     Subclasses implement a variety of communication formats such as CSV
     messages.
     """
-    def __init__(self, emitter_name="emitter", receiver_name="receiver",
+    def __init__(self,
+                 emitter_name="emitter",
+                 receiver_name="receiver",
                  time_step=None):
         """
         The constructor sets up the time_step and calls the method that
@@ -40,6 +42,7 @@ class SupervisorEmitterReceiver(SupervisorEnv):
             supervisor node
         :param receiver_name: The name of the receiver device on the
             supervisor node
+        :return: The initialized emitter and receiver references
         """
         emitter = self.getEmitter(emitter_name)
         receiver = self.getReceiver(receiver_name)
@@ -98,7 +101,9 @@ class SupervisorCSV(SupervisorEmitterReceiver):
     This class implements the emitter-receiver scheme using Comma Separated
     Values.
     """
-    def __init__(self, emitter_name="emitter", receiver_name="receiver",
+    def __init__(self,
+                 emitter_name="emitter",
+                 receiver_name="receiver",
                  time_step=None):
         """
         The constructor just passes the arguments provided to the parent
