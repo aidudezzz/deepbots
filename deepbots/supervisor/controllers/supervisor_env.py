@@ -61,7 +61,7 @@ class SupervisorEnv(Supervisor, gym.Env):
         """
         self.simulationReset()
         self.simulationResetPhysics()
-        super().step(int(self.getBasicTimeStep()))
+        super(Supervisor, self).step(int(self.getBasicTimeStep()))
         return self.get_default_observation()
 
     def get_default_observation(self):
