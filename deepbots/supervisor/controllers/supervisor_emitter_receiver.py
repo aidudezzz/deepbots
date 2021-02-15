@@ -31,9 +31,8 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         else:
             self.timestep = time_step
 
-        self.emitter = None
-        self.receiver = None
-        self.initialize_comms(emitter_name, receiver_name)
+        self.emitter, self.receiver = self.initialize_comms(
+            emitter_name, receiver_name)
 
     def initialize_comms(self, emitter_name, receiver_name):
         """
@@ -44,9 +43,10 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         :param receiver_name: The name of the receiver device on the
             supervisor node
         """
-        self.emitter = self.getEmitter(emitter_name)
-        self.receiver = self.getReceiver(receiver_name)
-        self.receiver.enable(self.timestep)
+        emitter = self.getEmitter(emitter_name)
+        receiver = self.getReceiver(receiver_name)
+        receiver.enable(self.timestep)
+        return emitter, receiver
 
     def step(self, action):
         """
