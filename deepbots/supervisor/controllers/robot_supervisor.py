@@ -1,4 +1,5 @@
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from controller import Supervisor
 
 
 class RobotSupervisor(SupervisorEnv):
@@ -51,7 +52,7 @@ class RobotSupervisor(SupervisorEnv):
         :return: tuple, (observations, reward, done, info) as provided by the
             corresponding methods as implemented for the use-case
         """
-        if self.step(self.timestep) == -1:
+        if super(Supervisor, self).step(self.timestep) == -1:
             exit()
 
         self.apply_action(action)
