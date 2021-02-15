@@ -30,7 +30,7 @@ class SupervisorEnv(Supervisor, gym.Env):
         observation, *state_t+1*, the reward and whether the episode
         is done or not.
 
-        Each of the value returned is produced by implementations of
+        Each of the values returned is produced by implementations of
         other abstract methods defined below.
 
         observation: The next observation from the environment
