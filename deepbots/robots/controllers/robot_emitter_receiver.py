@@ -1,3 +1,4 @@
+from warnings import warn, simplefilter
 from controller import Robot
 
 
@@ -17,7 +18,7 @@ class RobotEmitterReceiver:
     def __init__(self,
                  emitter_name="emitter",
                  receiver_name="receiver",
-                 time_step=None):
+                 timestep=None):
         """
         The basic robot constructor.
 
@@ -32,23 +33,43 @@ class RobotEmitterReceiver:
         For the step argument see relevant Webots documentation:
         https://cyberbotics.com/doc/guide/controller-programming#the-step-and-wb_robot_step-functions
 
-        :param time_step: int, positive or None
+        :param timestep: int, positive or None
         """
         self.robot = Robot()
 
-        if time_step is None:
+        if timestep is None:
             self.timestep = int(self.robot.getBasicTimeStep())
         else:
-            self.timestep = time_step
+            self.timestep = timestep
 
         self.emitter, self.receiver = self.initialize_comms(
             emitter_name, receiver_name)
 
     def get_timestep(self):
-        # TODO maybe remove this altogether and make self.timestep
-        #  a pythonic class property. Print deprecation warning for
-        #  next version?
+        # The filter is required so as to not ignore the Deprecation warning
+        simplefilter("once")
+        warn("get_timestep is deprecated, use .timestep instead",
+                  DeprecationWarning)
         return self.timestep
+
+    @property
+    def timestep(self):
+        """
+        Getter of _timestep field. Timestep is defined in milliseconds
+
+        :return: The timestep of the controller in milliseconds
+        """
+        return self._timestep
+
+    @timestep.setter
+    def timestep(self, value):
+        """
+        Setter of timestep field. Automatically converts to int as
+        required by Webots.
+
+        :param value: The new controller timestep in milliseconds
+        """
+        self._timestep = int(value)
 
     def initialize_comms(self, emitter_name, receiver_name):
         """
