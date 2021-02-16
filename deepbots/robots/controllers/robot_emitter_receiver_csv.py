@@ -13,7 +13,7 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
     def __init__(self,
                  emitter_name="emitter",
                  receiver_name="receiver",
-                 time_step=None):
+                 timestep=None):
         """
         The constructor just passes the arguments provided to the parent
         class contructor.
@@ -22,10 +22,10 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
             robot node, defaults to "emitter"
         :param receiver_name: The name of the receiver device on the
             robot node, defaults to "receiver"
-        :param time_step: The robot controller timestep, defaults to None
+        :param timestep: The robot controller timestep, defaults to None
         """
         super().__init__(emitter_name, receiver_name,
-                         time_step)
+                         timestep)
 
     def initialize_comms(self, emitter_name, receiver_name):
         """
