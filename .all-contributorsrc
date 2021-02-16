@@ -16,6 +16,15 @@
   },
   "skipCi": true,
   "contributors": [
+    {
+      "login": "ManosMagnus",
+      "name": "Manos Kirtas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10010230?v=4",
+      "profile": "http://eakirtas.webpages.auth.gr/",
+      "contributions": [
+        "code"
+      ]
+    }
   ],
   "projectName": "deepbots",
   "projectOwner": "aidudezzz",
