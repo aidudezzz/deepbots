@@ -1,4 +1,5 @@
 from collections.abc import Iterable
+from warnings import warn, simplefilter
 
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 from controller import Supervisor
@@ -14,23 +15,23 @@ class SupervisorEmitterReceiver(SupervisorEnv):
     def __init__(self,
                  emitter_name="emitter",
                  receiver_name="receiver",
-                 time_step=None):
+                 timestep=None):
         """
-        The constructor sets up the time_step and calls the method that
+        The constructor sets up the timestep and calls the method that
         initializes the emitter and receiver devices with the names provided.
 
         :param emitter_name: The name of the emitter device on the
             supervisor node
         :param receiver_name: The name of the receiver device on the
             supervisor node
-        :param time_step: The supervisor controller timestep
+        :param timestep: The supervisor controller timestep
         """
         super(SupervisorEmitterReceiver, self).__init__()
 
-        if time_step is None:
+        if timestep is None:
             self.timestep = int(self.getBasicTimeStep())
         else:
-            self.timestep = time_step
+            self.timestep = timestep
 
         self.emitter, self.receiver = self.initialize_comms(
             emitter_name, receiver_name)
@@ -91,10 +92,30 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         raise NotImplementedError
 
     def get_timestep(self):
-        # TODO maybe remove this altogether and make self.timestep
-        #  a pythonic class property. Print deprecation warning for
-        #  next version?
+        # The filter is required so as to not ignore the Deprecation warning
+        simplefilter("once")
+        warn("get_timestep is deprecated, use .timestep instead",
+                  DeprecationWarning)
         return self.timestep
+
+    @property
+    def timestep(self):
+        """
+        Getter of _timestep field. Timestep is defined in milliseconds
+
+        :return: The timestep of the controller in milliseconds
+        """
+        return self._timestep
+
+    @timestep.setter
+    def timestep(self, value):
+        """
+        Setter of timestep field. Automatically converts to int as
+        required by Webots.
+
+        :param value: The new controller timestep in milliseconds
+        """
+        self._timestep = int(value)
 
 
 class SupervisorCSV(SupervisorEmitterReceiver):
@@ -105,7 +126,7 @@ class SupervisorCSV(SupervisorEmitterReceiver):
     def __init__(self,
                  emitter_name="emitter",
                  receiver_name="receiver",
-                 time_step=None):
+                 timestep=None):
         """
         The constructor just passes the arguments provided to the parent
         class contructor.
@@ -114,10 +135,10 @@ class SupervisorCSV(SupervisorEmitterReceiver):
             supervisor node
         :param receiver_name: The name of the receiver device on the
             supervisor node
-        :param time_step: The supervisor controller timestep
+        :param timestep: The supervisor controller timestep
         """
         super(SupervisorCSV, self).__init__(emitter_name, receiver_name,
-                                            time_step)
+                                            timestep)
 
     def handle_emitter(self, action):
         """
