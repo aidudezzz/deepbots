@@ -1,7 +1,9 @@
 # deepbots
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![Version](https://img.shields.io/pypi/v/deepbots?color=green)](https://pypi.org/project/deepbots/)
+[![Dev Version](https://img.shields.io/github/v/tag/aidudezzz/deepbots?include_prereleases&label=test-pypi&color=green)](https://test.pypi.org/project/deepbots/)
+[![Downloads](https://static.pepy.tech/personalized-badge/deepbots?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/deepbots)
+[![License](https://img.shields.io/github/license/aidudezzz/deepbots?color=green)](https://github.com/aidudezzz/deepbots/blob/dev/LICENSE)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Deepbots is a simple framework which is used as "middleware" between the free
 and open-source [Cyberbotics' Webots](https://cyberbotics.com/) robot simulator
@@ -226,7 +228,8 @@ not responsible for any use that may be made of the information it contains.
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people
+([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -244,4 +247,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the
+[all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!
