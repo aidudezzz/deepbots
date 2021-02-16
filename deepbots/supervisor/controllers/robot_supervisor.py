@@ -1,3 +1,4 @@
+from warnings import warn, simplefilter
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 from controller import Supervisor
 
@@ -26,19 +27,39 @@ class RobotSupervisor(SupervisorEnv):
     action, e.g. motor speeds.
     Note that apply_action() is called during step().
     """
-    def __init__(self, time_step=None):
+    def __init__(self, timestep=None):
         super(RobotSupervisor, self).__init__()
 
-        if time_step is None:
+        if timestep is None:
             self.timestep = int(self.getBasicTimeStep())
         else:
-            self.timestep = time_step
+            self.timestep = timestep
 
     def get_timestep(self):
-        # TODO maybe remove this altogether and make self.timestep
-        #  a pythonic class property. Print deprecation warning for
-        #  next version?
+        # The filter is required so as to not ignore the Deprecation warning
+        simplefilter("once")
+        warn("get_timestep is deprecated, use .timestep instead",
+             DeprecationWarning)
         return self.timestep
+
+    @property
+    def timestep(self):
+        """
+        Getter of _timestep field. Timestep is defined in milliseconds
+
+        :return: The timestep of the controller in milliseconds
+        """
+        return self._timestep
+
+    @timestep.setter
+    def timestep(self, value):
+        """
+        Setter of timestep field. Automatically converts to int as
+        required by Webots.
+
+        :param value: The new controller timestep in milliseconds
+        """
+        self._timestep = int(value)
 
     def step(self, action):
         """
