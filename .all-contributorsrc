@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "KelvinYang0320",
+      "name": "Jiun Kai Yang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49781698?v=4",
+      "profile": "https://www.linkedin.com/in/kelvin-yang-b7b508198/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "deepbots",
+  "projectOwner": "aidudezzz",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
