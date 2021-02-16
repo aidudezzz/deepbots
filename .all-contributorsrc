@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ManosMagnus",
+      "name": "Manos Kirtas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10010230?v=4",
+      "profile": "http://eakirtas.webpages.auth.gr/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "deepbots",
+  "projectOwner": "aidudezzz",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
