@@ -1,16 +1,17 @@
-from abc import abstractmethod
-
+from warnings import warn, simplefilter
 from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from controller import Supervisor
 
 
 class RobotSupervisor(SupervisorEnv):
     """
     The RobotSupervisor class implements both a robot controller and a
-    supervisor RL environment. This class can be used when there is no
-    need to separate the Robot from the Supervisor, or the observations of
-    the robot are too big to be packaged in messages, e.g. high resolution
-    images from a camera, that introduce a bottleneck and reduce
-    performance significantly.
+    supervisor RL environment, referred to as Robot-Supervisor scheme.
+
+    This class can be used when there is no need to separate the Robot
+    from the Supervisor, or the observations of the robot are too big
+    to be packaged in messages, e.g. high resolution images from a camera,
+    that introduce a bottleneck and reduce performance significantly.
 
     Controllers that inherit this method *must* run on Robot nodes
     that have supervisor privileges.
@@ -26,26 +27,53 @@ class RobotSupervisor(SupervisorEnv):
     action, e.g. motor speeds.
     Note that apply_action() is called during step().
     """
-    def __init__(self, time_step=None):
+    def __init__(self, timestep=None):
         super(RobotSupervisor, self).__init__()
 
-        if time_step is None:
-            self.timestep = int(self.supervisor.getBasicTimeStep())
+        if timestep is None:
+            self.timestep = int(self.getBasicTimeStep())
         else:
-            self.timestep = time_step
+            self.timestep = timestep
 
     def get_timestep(self):
+        # The filter is required so as to not ignore the Deprecation warning
+        simplefilter("once")
+        warn("get_timestep is deprecated, use .timestep instead",
+             DeprecationWarning)
         return self.timestep
+
+    @property
+    def timestep(self):
+        """
+        Getter of _timestep field. Timestep is defined in milliseconds
+
+        :return: The timestep of the controller in milliseconds
+        """
+        return self._timestep
+
+    @timestep.setter
+    def timestep(self, value):
+        """
+        Setter of timestep field. Automatically converts to int as
+        required by Webots.
+
+        :param value: The new controller timestep in milliseconds
+        """
+        self._timestep = int(value)
 
     def step(self, action):
         """
-        Default step implementation that contains a Webots step conditional
-        for terminating properly.
+        The basic step method that steps the controller,
+        calls the method that applies the action on the robot
+        and returns the (observations, reward, done, info) object.
 
-        :param action: The agent's action
-        :return: tuple, (observation, reward, is_done, info)
+        :param action: Whatever the use-case uses as an action, e.g.
+            an integer representing discrete actions
+        :type action: Defined by the implementation of handle_emitter
+        :return: tuple, (observations, reward, done, info) as provided by the
+            corresponding methods as implemented for the use-case
         """
-        if self.supervisor.step(self.timestep) == -1:
+        if super(Supervisor, self).step(self.timestep) == -1:
             exit()
 
         self.apply_action(action)
@@ -56,7 +84,6 @@ class RobotSupervisor(SupervisorEnv):
             self.get_info(),
         )
 
-    @abstractmethod
     def apply_action(self, action):
         """
         This method should be implemented to apply whatever actions the
@@ -71,4 +98,4 @@ class RobotSupervisor(SupervisorEnv):
 
         :param action: list, containing action data
         """
-        pass
+        raise NotImplementedError
