@@ -56,8 +56,8 @@ class RobotEmitterReceiver(ABC):
 
         A basic example implementation can be:
 
-        emitter = self.robot.getEmitter("emitter")
-        receiver = self.robot.getReceiver("receiver")
+        emitter = self.robot.getDevice("emitter")
+        receiver = self.robot.getDevice("receiver")
         receiver.enable(self.timestep)
         return emitter, receiver
 

@@ -23,8 +23,8 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
 
         :return: emitter and receiver references
         """
-        emitter = self.robot.getEmitter("emitter")
-        receiver = self.robot.getReceiver("receiver")
+        emitter = self.robot.getDevice("emitter")
+        receiver = self.robot.getDevice("receiver")
         receiver.enable(self.timestep)
         return emitter, receiver
 

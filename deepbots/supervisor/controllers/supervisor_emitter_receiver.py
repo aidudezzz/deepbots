@@ -22,8 +22,8 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         self.initialize_comms(emitter_name, receiver_name)
 
     def initialize_comms(self, emitter_name, receiver_name):
-        self.emitter = self.supervisor.getEmitter(emitter_name)
-        self.receiver = self.supervisor.getReceiver(receiver_name)
+        self.emitter = self.supervisor.getDevice(emitter_name)
+        self.receiver = self.supervisor.getDevice(receiver_name)
         self.receiver.enable(self.timestep)
         return self.emitter, self.receiver
 
