@@ -230,6 +230,7 @@ not responsible for any use that may be made of the information it contains.
   <tr>
     <td align="center"><a href="http://eakirtas.webpages.auth.gr/"><img src="https://avatars.githubusercontent.com/u/10010230?v=4" width="100px;" alt=""/><br /><sub><b>Manos Kirtas</b></sub></a></td>
     <td align="center"><a href="https://github.com/tsampazk"><img src="https://avatars.githubusercontent.com/u/27914645?v=4" width="100px;" alt=""/><br /><sub><b>Kostas Tsampazis</b></sub></a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/kelvin-yang-b7b508198/"><img src="https://avatars.githubusercontent.com/u/49781698?v=4" width="100px;" alt=""/><br /><sub><b>Jiun Kai Yang</b></sub></a></td>
   </tr>
 </table>
 
