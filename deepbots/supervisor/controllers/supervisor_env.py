@@ -11,7 +11,19 @@ class SupervisorEnv(Supervisor, gym.Env):
     for additional functionality.
 
     This class contains abstract methods that guide the development process
-    for users that want to implement a simple environment.
+    for users that want to implement an environment in Webots.
+    
+    It represents the basic template which contains the necessary
+    methods to train a reinforcement learning algorithm. The interface class
+    follows the gym interface which is standardized in many reinforcement
+    learning algorithms. The OpenAI gym environment can be described by the
+    following figure:
+
+    +----------+             (action)            +---------------+
+    |          |-------------------------------->|               |
+    |   Agent  |                                 | SupervisorEnv |
+    |          |<--------------------------------|               |
+    +----------+      (observation, reward)      +---------------+
 
     This class is not intended for user usage, but to provide a common
     interface for all provided supervisor classes and make them
@@ -19,6 +31,7 @@ class SupervisorEnv(Supervisor, gym.Env):
     the gym interface. Moreover, a problem-agnostic reset method is
     provided. Please use any of the children supervisor classes to be
     inherited by your own class, such as the RobotSupervisor class.
+    
     Nevertheless, advanced users can inherit this class to create
     their own supervisor classes if they wish.
     """
