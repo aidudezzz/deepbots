@@ -1,6 +1,6 @@
 # deepbots
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Deepbots is a simple framework which is used as "middleware" between the free
@@ -235,6 +235,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://eakirtas.webpages.auth.gr/"><img src="https://avatars.githubusercontent.com/u/10010230?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Manos Kirtas</b></sub></a><br /><a href="https://github.com/aidudezzz/deepbots/commits?author=ManosMagnus" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/tsampazk"><img src="https://avatars.githubusercontent.com/u/27914645?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kostas Tsampazis</b></sub></a><br /><a href="https://github.com/aidudezzz/deepbots/commits?author=tsampazk" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/kelvin-yang-b7b508198/"><img src="https://avatars.githubusercontent.com/u/49781698?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jiun Kai Yang</b></sub></a><br /><a href="https://github.com/aidudezzz/deepbots/commits?author=KelvinYang0320" title="Code">💻</a></td>
   </tr>
 </table>
 
