@@ -31,6 +31,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "MentalGear",
+      "name": "MentalGear",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2837147?v=4",
+      "profile": "https://github.com/MentalGear",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
