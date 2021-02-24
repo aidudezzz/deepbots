@@ -187,6 +187,10 @@ the `Robot` and an object. As it is expected, the `Robot` does not know the
 Euclidean distance, only the `Supervisor` can calculate it, because it has
 access to all entities in the `World`.
 
+You can follow the 
+[emitter-receiver scheme tutorial](https://github.com/aidudezzz/deepbots-tutorials/blob/master/emitterReceiverSchemeTutorial/README.md)
+to get started and work your way up from there.
+
 <p align="center">
     <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/workflow_diagram.png">
 </p>
@@ -201,6 +205,11 @@ This is circumvented by inheriting and implementing the partially abstract
 `Supervisor Controller` into one, forgoing all `emitter`/`receiver`
 communication. This new controller runs on the `Robot`, but requires
 `Supervisor` privileges and is limited to one `Robot`, one `Supervisor`.
+
+You can follow the 
+[robot-supervisor scheme tutorial](https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial)
+to get started and work your way up from there. We recommended this
+tutorial to get started with deepbots.
 
 ### Abstraction Levels
 
