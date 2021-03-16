@@ -1,5 +1,5 @@
 <p align="left">
-    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/swag/logo/deepbots_full.png">
+    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots-swag/main/logo/deepbots_full.png">
 </p>
 
 [![Version](https://img.shields.io/pypi/v/deepbots?color=green)](https://pypi.org/project/deepbots/)
