@@ -1,4 +1,3 @@
-
 <p align="left">
     <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/swag/logo/deepbots_full.png">
 </p>
