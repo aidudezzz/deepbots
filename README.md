@@ -1,4 +1,8 @@
-# deepbots
+
+<p align="left">
+    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/swag/logo/deepbots_full.png">
+</p>
+
 [![Version](https://img.shields.io/pypi/v/deepbots?color=green)](https://pypi.org/project/deepbots/)
 [![Dev Version](https://img.shields.io/github/v/tag/aidudezzz/deepbots?include_prereleases&label=test-pypi&color=green)](https://test.pypi.org/project/deepbots/)
 [![Downloads](https://static.pepy.tech/personalized-badge/deepbots?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/deepbots)
@@ -257,3 +261,5 @@ Thanks goes to these wonderful people
 This project follows the
 [all-contributors](https://github.com/all-contributors/all-contributors)
 specification. Contributions of any kind welcome!
+
+<b> Special thanks to <a href='https://www.papanikolaouev.com/'>Papanikolaou Evangelia</a> </b> designing project's logo! </b> 
