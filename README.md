@@ -65,16 +65,12 @@ https://link.springer.com/chapter/10.1007/978-3-030-49186-4_6
     and Tsampazis, K.
     and Passalis, N.
     and Tefas, A.",
-    editor="Maglogiannis, Ilias
-    and Iliadis, Lazaros
-    and Pimenidis, Elias",
     title="Deepbots: A Webots-Based Deep Reinforcement Learning Framework for Robotics",
     booktitle="Artificial Intelligence Applications and Innovations",
     year="2020",
     publisher="Springer International Publishing",
     address="Cham",
     pages="64--75",
-    abstract="Deep Reinforcement Learning (DRL) is increasingly used to train robots to perform complex and delicate tasks, while the development of realistic simulators contributes to the acceleration of research on DRL for robotics. However, it is still not straightforward to employ such simulators in the typical DRL pipeline, since their steep learning curve and the enormous amount of development required to interface with DRL methods significantly restrict their use by researchers. To overcome these limitations, in this work we present an open-source framework that combines an established interface used by DRL researchers, the OpenAI Gym interface, with the state-of-the-art Webots robot simulator in order to provide a standardized way to employ DRL in various robotics scenarios. Deepbots aims to enable researchers to easily develop DRL methods in Webots by handling all the low-level details and reducing the required development effort. The effectiveness of the proposed framework is demonstrated through code examples, as well as using three use cases of varying difficulty.",
     isbn="978-3-030-49186-4"
 }
 
