@@ -1,0 +1,7 @@
+gym==0.17.2
+numpy==1.19.2
+tensorflow==2.5.0
+stable-baselines3
+ray==1.2.0
+torch==1.8.1
+wandb
