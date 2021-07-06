@@ -249,6 +249,7 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://www.linkedin.com/in/kelvin-yang-b7b508198/"><img src="https://avatars.githubusercontent.com/u/49781698?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jiun Kai Yang</b></sub></a><br /><a href="https://github.com/aidudezzz/deepbots/commits?author=KelvinYang0320" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/MentalGear"><img src="https://avatars.githubusercontent.com/u/2837147?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MentalGear</b></sub></a><br /><a href="#ideas-MentalGear" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/DreamtaleCore"><img src="https://avatars.githubusercontent.com/u/12713528?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dreamtale</b></sub></a><br /><a href="https://github.com/aidudezzz/deepbots/issues?q=author%3ADreamtaleCore" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://nickkok.github.io/my-website/"><img src="https://avatars.githubusercontent.com/u/8222731?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nikolaos Kokkinis-Ntrenis</b></sub></a><br /><a href="https://github.com/aidudezzz/deepbots/commits?author=NickKok" title="Code">💻</a> <a href="https://github.com/aidudezzz/deepbots/commits?author=NickKok" title="Documentation">📖</a> <a href="#ideas-NickKok" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
