@@ -1,9 +1,13 @@
-from deepbots.deepbots.supervisor.controllers.supervisor_emitter_receiver import SupervisorCSV
+from deepbots.supervisor.controllers.supervisor_emitter_receiver import SupervisorCSV
 
-import pygad.GA as GA
+import pygad
 import pygad.torchga as torchga
 from pygad.torchga import TorchGA
 import torch
+from functools import partial
+
+'''def fitness_func(model, solution, solution_idx):
+    pass'''
 
 class SupervisorEvolutionary(SupervisorCSV):
     '''
@@ -21,17 +25,17 @@ class SupervisorEvolutionary(SupervisorCSV):
         self.model = model
 
     def fitness_function(self, solution, solution_idx):
-        # ToDo : Add gpu compatibility
+        # TODO : Add gpu compatibility
         model_weights = torchga.model_weights_as_dict(model=self.model, weights_vector=solution)
         self.model.load_state_dict(model_weights)
 
         observation = self.reset()
-        observation = torch.tensor(observation).unsqueeze(0)
         total_reward = 0
         done = False
         no_steps = 0
         
         while not done and no_steps < 1000:
+            observation = torch.tensor(observation).unsqueeze(0).float()
             next_observation, reward, done, info = self.step(observation)
             total_reward += reward
             observation = next_observation
@@ -39,7 +43,7 @@ class SupervisorEvolutionary(SupervisorCSV):
         return total_reward
 
     def step(self, observation):
-        self.get_action(observation)
+        action = self.get_action(observation)
         next_observation, reward, done, info = super(SupervisorCSV, self).step(action)
 
         return next_observation, reward, done, info
@@ -48,8 +52,8 @@ class SupervisorEvolutionary(SupervisorCSV):
         raise NotImplementedError
 
     def callback_generation(self, ga_solver):
-        # ToDo : Add more logging and Tensorboard / Wandb integration
-        print(f"Generation: {ga_solver.generations_completed} | Fitness: {ga_solver.best_solver()[1]}")
+        # TODO : Add more logging and Tensorboard / Wandb integration
+        print(f"Generation: {ga_solver.generations_completed} | Fitness: {ga_solver.best_solution()[1]}")
 
     def train(
         self,
@@ -64,18 +68,21 @@ class SupervisorEvolutionary(SupervisorCSV):
     ):
 
         initial_population = TorchGA(model=self.model, num_solutions=num_solutions).population_weights
+        fitness_func = lambda solution, solution_idx: self.fitness_function(solution=solution, solution_idx=solution_idx)
+        callback = lambda ga_solver: self.callback_generation(ga_solver=ga_solver)
+        #partial(fitness_func, model=self.model)
     
-        self.ga_solver = GA(
+        self.ga_solver = pygad.GA(
                     num_generations=num_generations,
                     num_parents_mating=num_parents_mating,
                     initial_population=initial_population,
-                    fitness_func=self.fitness_function,
+                    fitness_func=fitness_func,
                     parent_selection_type=parent_selection_type,
                     crossover_type=crossover_type,
                     mutation_type=mutation_type,
                     mutation_percent_genes=mutation_percent_genes,
-                    keep_parent=keep_parents,
-                    on_generation=self.callback_generation
+                    keep_parents=keep_parents,
+                    on_generation=callback
                 )
 
         self.ga_solver.run()
