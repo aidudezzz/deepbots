@@ -5,9 +5,7 @@ import pygad.torchga as torchga
 from pygad.torchga import TorchGA
 import torch
 from functools import partial
-
-'''def fitness_func(model, solution, solution_idx):
-    pass'''
+import matplotlib.pyplot as plt
 
 class SupervisorEvolutionary(SupervisorCSV):
     '''
@@ -15,7 +13,6 @@ class SupervisorEvolutionary(SupervisorCSV):
         - Add gpu compatibility
         - Add more logging and Tensorboard / wandb integration
         - Add docstrings
-        - Add more kwargs for PyGAD GA
         - Add exceptions
         - Change comm scheme and add support for multiple robots
     '''
@@ -23,6 +20,7 @@ class SupervisorEvolutionary(SupervisorCSV):
     def __init__(self, model):
         super(SupervisorEvolutionary, self).__init__()
         self.model = model
+        self.fitness = []
 
     def fitness_function(self, solution, solution_idx):
         # TODO : Add gpu compatibility
@@ -54,6 +52,7 @@ class SupervisorEvolutionary(SupervisorCSV):
     def callback_generation(self, ga_solver):
         # TODO : Add more logging and Tensorboard / Wandb integration
         print(f"Generation: {ga_solver.generations_completed} | Fitness: {ga_solver.best_solution()[1]}")
+        self.fitness.append(ga_solver.best_solution()[1])
 
     def train(
         self,
@@ -65,6 +64,7 @@ class SupervisorEvolutionary(SupervisorCSV):
         mutation_type="random",
         mutation_percent_genes=10, 
         keep_parents=-1, 
+        **kwargs,
     ):
 
         initial_population = TorchGA(model=self.model, num_solutions=num_solutions).population_weights
@@ -82,7 +82,8 @@ class SupervisorEvolutionary(SupervisorCSV):
                     mutation_type=mutation_type,
                     mutation_percent_genes=mutation_percent_genes,
                     keep_parents=keep_parents,
-                    on_generation=callback
+                    on_generation=callback,
+                    **kwargs,
                 )
 
         self.ga_solver.run()
@@ -90,14 +91,19 @@ class SupervisorEvolutionary(SupervisorCSV):
         trained_model_weights = torchga.model_weights_as_dict(model=self.model, weights_vector=solution)
         self.model.load_state_dict(trained_model_weights)
         print(f"Fitness value of best solution = {solution_fitness}")
+        self.plot_fitness()
 
-        return self.model, solution_fitness, solution_idx
+        return self.model, solution_fitness, solution_idx, self.fitness
 
     def save_model(self, path):
         torch.save(self.model.state_dict(), path)
 
     def plot_fitness(self):
-        self.ga_solver.plot_fitness(title="Fitness vs Generation", linewidth=3)
+        plt.plot(self.fitness)
+        plt.xlabel("Generation")
+        plt.ylabel("Fitness")
+        plt.title("Fitness vs Generation Plot")
+        plt.show()
 
 
 
