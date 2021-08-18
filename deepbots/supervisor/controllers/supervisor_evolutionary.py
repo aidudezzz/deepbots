@@ -29,7 +29,6 @@ class SupervisorEvolutionary(SupervisorCSV):
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = model.to(device)
         self.device = device
-        #self.count = 0
 
     def fitness_function(self, solution, solution_idx):
         """
@@ -44,9 +43,7 @@ class SupervisorEvolutionary(SupervisorCSV):
         :return: The fitness value of the solution vector.
         :rtype: float
         """
-        #print("Reset")
-        #print(self.count)
-        #self.count += 1
+
         model_weights = torchga.model_weights_as_dict(model=self.model, weights_vector=solution)
         model_weights = {k: v.to(self.device) for k, v in model_weights.items()}
         self.model.load_state_dict(model_weights)
@@ -56,13 +53,14 @@ class SupervisorEvolutionary(SupervisorCSV):
         done = False
         no_steps = 0
         
-        while not done and no_steps < 1000:
+        while not done:
             observation = torch.tensor(observation).unsqueeze(0).float().to(self.device)
             next_observation, reward, done, info = self.step(observation)
-            total_reward += reward
+            self.episodeScore += reward
             observation = next_observation
+            no_steps += 1
 
-        return total_reward
+        return self.episodeScore
 
     def step(self, observation):
         """
@@ -189,7 +187,3 @@ class SupervisorEvolutionary(SupervisorCSV):
         plt.ylabel("Fitness")
         plt.title("Fitness vs Generation Plot")
         plt.show()
-
-
-
-
