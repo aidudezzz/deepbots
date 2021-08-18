@@ -4,17 +4,17 @@ import pygad
 import pygad.torchga as torchga
 from pygad.torchga import TorchGA
 import torch
-from functools import partial
 import matplotlib.pyplot as plt
+import wandb
+
 
 class SupervisorEvolutionary(SupervisorCSV):
     '''
     TODO:
-        - Add more logging and Tensorboard / wandb integration
         - Change comm scheme and add support for multiple robots
     '''
         
-    def __init__(self, model, device):
+    def __init__(self, model, device=None):
         """
         The base class for implementing genetic algorithms using deepbots.
 
@@ -87,7 +87,7 @@ class SupervisorEvolutionary(SupervisorCSV):
         """
         raise NotImplementedError
 
-    def callback_generation(self, ga_solver):
+    def callback_generation(self, ga_solver, wandb_logging):
         """
         Callback function for the genetic algorithm solver. This function is called after each generation and prints fitness 
         of the best solution in the generation.
@@ -95,12 +95,14 @@ class SupervisorEvolutionary(SupervisorCSV):
         :param ga_solver: The genetic algorithm solver object.
         :type ga_solver: pygad.GA
         """
-        # TODO : Add more logging and Tensorboard / Wandb integration
         print(f"Generation: {ga_solver.generations_completed} | Fitness: {ga_solver.best_solution()[1]}")
+        if wandb_logging:
+            wandb.log({"Fitness": ga_solver.best_solution()[1]})
         self.fitness.append(ga_solver.best_solution()[1])
 
     def train(
         self,
+        wandb_logging=True,
         num_generations=75, 
         num_parents_mating=5,
         num_solutions=10,
@@ -114,6 +116,8 @@ class SupervisorEvolutionary(SupervisorCSV):
         """
         Method to train the model using the genetic algorithm.
 
+        :param wandb_logging: Flag to enable wandb logging.
+        :type wandb_logging: bool
         :param num_generations: The number of generations to be trained for.
         :type num_generations: int
         :param num_parents_mating: The number of parents to be selected for mating.
@@ -140,7 +144,7 @@ class SupervisorEvolutionary(SupervisorCSV):
         initial_population = TorchGA(model=self.model, num_solutions=num_solutions).population_weights
         #print(f"Initial population len: {initial_population[0].shape}")
         fitness_func = lambda solution, solution_idx: self.fitness_function(solution=solution, solution_idx=solution_idx)
-        callback = lambda ga_solver: self.callback_generation(ga_solver=ga_solver)
+        callback = lambda ga_solver: self.callback_generation(ga_solver=ga_solver, wandb_logging=wandb_logging)
         #partial(fitness_func, model=self.model)
     
         self.ga_solver = pygad.GA(
