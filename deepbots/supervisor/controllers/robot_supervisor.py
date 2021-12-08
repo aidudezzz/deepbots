@@ -1,5 +1,5 @@
 from warnings import warn, simplefilter
-from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv, SupervisorGoalEnv
 from controller import Supervisor
 
 
@@ -97,5 +97,26 @@ class RobotSupervisor(SupervisorEnv):
         forward.
 
         :param action: list, containing action data
+        """
+        raise NotImplementedError
+
+class RobotGoalSupervisor(SupervisorGoalEnv, RobotSupervisor):
+    """
+    The RobotGoalSupervisor class is just like RobotSupervisor, but it 
+    uses compute_reward from gym.GoalEnv.
+    """
+    def __init__(self, timestep=None):
+        super(RobotGoalSupervisor, self).__init__()
+
+        if timestep is None:
+            self.timestep = int(self.getBasicTimeStep())
+        else:
+            self.timestep = timestep
+
+    def step(self, action):
+        """
+        The basic step method is use-case specific and needs to be implemented
+        by the user and please use compute_reward inherited from gym.GoalEnv() 
+        instead of get_reward().
         """
         raise NotImplementedError

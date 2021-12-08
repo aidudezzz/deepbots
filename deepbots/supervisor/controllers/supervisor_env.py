@@ -2,27 +2,8 @@ import gym
 from controller import Supervisor
 
 
-class SupervisorEnv(Supervisor, gym.Env):
-    """
-    This class is the highest class in deepbots class hierarchy, inheriting
-    both the Webots Supervisor controller and the basic gym.Env.
-
-    Refer to gym.Env documentation on how to implement a custom gym.Env
-    for additional functionality.
-
-    This class contains abstract methods that guide the development process
-    for users that want to implement a simple environment.
-
-    This class is not intended for user usage, but to provide a common
-    interface for all provided supervisor classes and make them
-    compatible with reinforcement learning agents that work with
-    the gym interface. Moreover, a problem-agnostic reset method is
-    provided. Please use any of the children supervisor classes to be
-    inherited by your own class, such as the RobotSupervisor class.
-    Nevertheless, advanced users can inherit this class to create
-    their own supervisor classes if they wish.
-    """
-
+class SupervisorBasicEnv:
+    
     def step(self, action):
         """
         On each timestep, the agent chooses an action for the previous
@@ -42,27 +23,6 @@ class SupervisorEnv(Supervisor, gym.Env):
         :return: tuple, (observation, reward, is_done, info)
         """
         raise NotImplementedError
-
-    def reset(self):
-        """
-        Used to reset the world to an initial state.
-
-        Default, problem-agnostic, implementation of reset method,
-        using Webots-provided methods.
-
-        *Note that this works properly only with Webots versions >R2020b
-        and must be overridden with a custom reset method when using
-        earlier versions. It is backwards compatible due to the fact
-        that the new reset method gets overridden by whatever the user
-        has previously implemented, so an old supervisor can be migrated
-        easily to use this class.
-
-        :return: default observation provided by get_default_observation()
-        """
-        self.simulationReset()
-        self.simulationResetPhysics()
-        super(Supervisor, self).step(int(self.getBasicTimeStep()))
-        return self.get_default_observation()
 
     def get_default_observation(self):
         """
@@ -115,3 +75,79 @@ class SupervisorEnv(Supervisor, gym.Env):
         information on each step, e.g. for debugging purposes.
         """
         raise NotImplementedError
+
+class SupervisorEnv(Supervisor, gym.Env, SupervisorBasicEnv):
+    """
+    This class is the highest class except SupervisorBasicEnv in deepbots 
+    class hierarchy, inheriting the Webots Supervisor controller, the basic 
+    gym.Env, and the basic RL functions.
+
+    Refer to gym.Env documentation on how to implement a custom gym.Env
+    for additional functionality.
+
+    This class contains abstract methods that guide the development process
+    for users that want to implement a simple environment.
+
+    This class is not intended for user usage, but to provide a common
+    interface for all provided supervisor classes and make them
+    compatible with reinforcement learning agents that work with
+    the gym interface. Moreover, a problem-agnostic reset method is
+    provided. Please use any of the children supervisor classes to be
+    inherited by your own class, such as the RobotSupervisor class.
+    Nevertheless, advanced users can inherit this class to create
+    their own supervisor classes if they wish.
+    """
+
+    def reset(self):
+        """
+        Used to reset the world to an initial state.
+
+        Default, problem-agnostic, implementation of reset method,
+        using Webots-provided methods.
+
+        *Note that this works properly only with Webots versions >R2020b
+        and must be overridden with a custom reset method when using
+        earlier versions. It is backwards compatible due to the fact
+        that the new reset method gets overridden by whatever the user
+        has previously implemented, so an old supervisor can be migrated
+        easily to use this class.
+
+        :return: default observation provided by get_default_observation()
+        """
+        self.simulationReset()
+        self.simulationResetPhysics()
+        super(Supervisor, self).step(int(self.getBasicTimeStep()))
+        return self.get_default_observation()
+
+    
+
+class SupervisorGoalEnv(Supervisor, gym.GoalEnv, SupervisorBasicEnv):
+    """
+    This class is just like SupervisorEnv, but it imposes gym.GoalEnv. 
+
+    Refer to gym.GoalEnv documentation on how to implement a custom 
+    gym.GoalEnv for additional functionality.
+    """
+
+    def reset(self):
+        """
+        Used to reset the world to an initial state and enforce that each 
+        SupervisorGoalEnv uses a Goal-compatible observation space.
+
+        Default, problem-agnostic, implementation of reset method,
+        using Webots-provided methods.
+
+        *Note that this works properly only with Webots versions >R2020b
+        and must be overridden with a custom reset method when using
+        earlier versions. It is backwards compatible due to the fact
+        that the new reset method gets overridden by whatever the user
+        has previously implemented, so an old supervisor can be migrated
+        easily to use this class.
+
+        :return: default observation provided by get_default_observation()
+        """
+        super().reset() 
+        self.simulationReset()
+        self.simulationResetPhysics()
+        super(Supervisor, self).step(int(self.getBasicTimeStep()))
+        return self.get_default_observation()
