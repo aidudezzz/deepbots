@@ -27,6 +27,7 @@ class RobotSupervisor(SupervisorEnv):
     action, e.g. motor speeds.
     Note that apply_action() is called during step().
     """
+
     def __init__(self, timestep=None):
         super(RobotSupervisor, self).__init__()
 
@@ -100,11 +101,13 @@ class RobotSupervisor(SupervisorEnv):
         """
         raise NotImplementedError
 
+
 class RobotGoalSupervisor(SupervisorGoalEnv, RobotSupervisor):
     """
     The RobotGoalSupervisor class is just like RobotSupervisor, but it 
     uses compute_reward from gym.GoalEnv.
     """
+
     def __init__(self, timestep=None):
         super(RobotGoalSupervisor, self).__init__()
 

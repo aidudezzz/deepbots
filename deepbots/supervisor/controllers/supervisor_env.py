@@ -3,7 +3,7 @@ from controller import Supervisor
 
 
 class SupervisorBasicEnv:
-    
+
     def step(self, action):
         """
         On each timestep, the agent chooses an action for the previous
@@ -76,6 +76,7 @@ class SupervisorBasicEnv:
         """
         raise NotImplementedError
 
+
 class SupervisorEnv(Supervisor, gym.Env, SupervisorBasicEnv):
     """
     This class is the highest class except SupervisorBasicEnv in deepbots 
@@ -119,7 +120,6 @@ class SupervisorEnv(Supervisor, gym.Env, SupervisorBasicEnv):
         super(Supervisor, self).step(int(self.getBasicTimeStep()))
         return self.get_default_observation()
 
-    
 
 class SupervisorGoalEnv(Supervisor, gym.GoalEnv, SupervisorBasicEnv):
     """
@@ -146,7 +146,7 @@ class SupervisorGoalEnv(Supervisor, gym.GoalEnv, SupervisorBasicEnv):
 
         :return: default observation provided by get_default_observation()
         """
-        super().reset() 
+        super().reset()
         self.simulationReset()
         self.simulationResetPhysics()
         super(Supervisor, self).step(int(self.getBasicTimeStep()))
