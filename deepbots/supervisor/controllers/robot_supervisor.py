@@ -106,6 +106,11 @@ class RobotGoalSupervisor(SupervisorGoalEnv, RobotSupervisor):
     """
     The RobotGoalSupervisor class is just like RobotSupervisor, but it 
     uses compute_reward from gym.GoalEnv.
+
+    step():
+    (similar to use_step() of RobotSupervisor)
+    This method steps the controller.
+    Note that the gym-inherited compute_reward method is used here.
     """
 
     def __init__(self, timestep=None):
@@ -118,8 +123,40 @@ class RobotGoalSupervisor(SupervisorGoalEnv, RobotSupervisor):
 
     def step(self, action):
         """
-        The basic step method is use-case specific and needs to be implemented
-        by the user and please use compute_reward inherited from gym.GoalEnv() 
-        instead of get_reward().
+        The basic step method that steps the controller,
+        calls the method that applies the action on the robot
+        and returns the (observations, reward, done, info) object.
+
+        For RobotGoalSupervisor, the gym-inherited compute_reward
+        method is used. This method must be implemented by the
+        user, according to gym.GoalEnv, using achieved_goal and
+        desired_goal.
+
+        :param action: Whatever the use-case uses as an action, e.g.
+            an integer representing discrete actions
+        :type action: Defined by the implementation
+        :param achieved_goal: the goal that was achieved during execution
+        :type achieved_goal: object
+        :param desired_goal: the desired goal that we asked the agent to 
+            attempt to achieve
+        :type desired_goal: object
+        :param info: an info dictionary with additional information
+        :type info: object
+        :return: tuple, (observations, reward, done, info) as provided by the
+            corresponding methods as implemented for the use-case
         """
-        raise NotImplementedError
+        if super(Supervisor, self).step(self.timestep) == -1:
+            exit()
+
+        self.apply_action(action)
+        obs = self.get_observations()
+        info = self.get_info()
+
+        return (
+            obs,
+            self.compute_reward(obs["achieved_goal"],
+                                obs["desired_goal"],
+                                info),
+            self.is_done(),
+            info,
+        )
