@@ -7,7 +7,7 @@ class KeyboardPrinter(SupervisorEnv):
     def __init__(self, controller):
         self.controller = controller
         self.keyboard = Keyboard()
-        self.keyboard.enable(self.controller.get_timestep())
+        self.keyboard.enable(self.controller.timestep)
 
     def step(self, action):
         observation, reward, isDone, info = self.controller.step(action)
