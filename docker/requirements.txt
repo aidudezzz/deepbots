@@ -1,5 +1,5 @@
 gym==0.17.2
-numpy==1.19.2
+numpy==1.22.0
 tensorflow==2.6.4
 stable-baselines3
 ray==1.2.0
