@@ -1,9 +1,9 @@
 from controller import Keyboard
 
-from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from deepbots.supervisor.controllers.supervisor_env import DeepbotsEnv
 
 
-class KeyboardPrinter(SupervisorEnv):
+class KeyboardPrinter(DeepbotsEnv):
     def __init__(self, controller):
         self.controller = controller
         self.keyboard = Keyboard()

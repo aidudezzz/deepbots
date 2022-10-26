@@ -1,11 +1,11 @@
 from collections.abc import Iterable
 from warnings import warn, simplefilter
 
-from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from deepbots.supervisor.controllers.supervisor_env import DeepbotsEnv
 from controller import Supervisor
 
 
-class SupervisorEmitterReceiver(SupervisorEnv):
+class SupervisorEmitterReceiver(DeepbotsEnv):
     """
     This is the base class for the emitter - receiver scheme.
 
