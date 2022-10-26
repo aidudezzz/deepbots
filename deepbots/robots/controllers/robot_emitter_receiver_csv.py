@@ -39,8 +39,8 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
             supervisor node
         :return: The initialized emitter and receiver references
         """
-        emitter = self.robot.getDevice(emitter_name)
-        receiver = self.robot.getDevice(receiver_name)
+        emitter = self.getDevice(emitter_name)
+        receiver = self.getDevice(receiver_name)
         receiver.enable(self.timestep)
         return emitter, receiver
 
