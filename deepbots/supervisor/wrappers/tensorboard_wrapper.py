@@ -1,10 +1,10 @@
 import numpy as np
 from tensorboardX import SummaryWriter
 
-from deepbots.supervisor.controllers.supervisor_env import DeepbotsEnv
+from deepbots.supervisor.controllers.deepbots_supervisor_env import DeepbotsSupervisorEnv
 
 
-class TensorboardLogger(DeepbotsEnv):
+class TensorboardLogger(DeepbotsSupervisorEnv):
     def __init__(self,
                  controller,
                  log_dir="logs/results",
