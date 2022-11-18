@@ -1,0 +1,2 @@
+from deepbots.supervisor.controllers.robot_supervisor_env import RobotSupervisorEnv
+from deepbots.supervisor.controllers.csv_supervisor_env import CSVSupervisorEnv
