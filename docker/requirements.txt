@@ -1,6 +1,6 @@
 gym==0.17.2
 numpy==1.22.0
-tensorflow==2.7.2
+tensorflow==2.9.3
 stable-baselines3
 ray==1.2.0
 torch==1.8.1
