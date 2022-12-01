@@ -77,7 +77,10 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
         """
         if self.receiver.getQueueLength() > 0:
             # Receive and decode message from supervisor
-            message = self.receiver.getData().decode("utf-8")
+            try:
+                message = self.receiver.getString()
+            except AttributeError:
+                message = self.receiver.getData().decode("utf-8")
             # Convert string message into a list
             message = message.split(",")
 

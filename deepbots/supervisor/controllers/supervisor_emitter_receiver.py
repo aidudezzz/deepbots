@@ -166,7 +166,10 @@ class SupervisorCSV(SupervisorEmitterReceiver):
         :rtype: List of string values
         """
         if self.receiver.getQueueLength() > 0:
-            string_message = self.receiver.getData().decode("utf-8")
+            try:
+                string_message = self.receiver.getString()
+            except AttributeError:
+                string_message = self.receiver.getData().decode("utf-8")
             self.receiver.nextPacket()
             return string_message.split(",")
         else:
