@@ -63,10 +63,10 @@ class SupervisorEmitterReceiver(SupervisorEnv):
         :return: (observations, reward, done, info) as provided by the
             corresponding methods as implemented for the use-case
         """
+        self.handle_emitter(action)
         if super(Supervisor, self).step(self.timestep) == -1:
             exit()
 
-        self.handle_emitter(action)
         return (
             self.get_observations(),
             self.get_reward(action),
