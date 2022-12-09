@@ -73,10 +73,10 @@ class RobotSupervisor(SupervisorEnv):
         :return: tuple, (observations, reward, done, info) as provided by the
             corresponding methods as implemented for the use-case
         """
+        self.apply_action(action)
         if super(Supervisor, self).step(self.timestep) == -1:
             exit()
 
-        self.apply_action(action)
         return (
             self.get_observations(),
             self.get_reward(action),
