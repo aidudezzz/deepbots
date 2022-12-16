@@ -1,1 +1,2 @@
-gym
+gym==0.21
+tensorboardX
