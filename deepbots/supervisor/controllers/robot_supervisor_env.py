@@ -1,11 +1,14 @@
-from warnings import warn, simplefilter
-from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
+from warnings import simplefilter, warn
+
 from controller import Supervisor
 
+from deepbots.supervisor.controllers.deepbots_supervisor_env import \
+    DeepbotsSupervisorEnv
 
-class RobotSupervisor(SupervisorEnv):
+
+class RobotSupervisorEnv(DeepbotsSupervisorEnv):
     """
-    The RobotSupervisor class implements both a robot controller and a
+    The RobotSupervisorEnv class implements both a robot controller and a
     supervisor RL environment, referred to as Robot-Supervisor scheme.
 
     This class can be used when there is no need to separate the Robot
@@ -18,17 +21,17 @@ class RobotSupervisor(SupervisorEnv):
 
     The user needs to implement the regular methods for the environment,
     reward(), get_observations(), get_default_observation, etc., from
-    SupervisorEnv according to their use-case in addition to the method
+    DeepbotsSupervisorEnv according to their use-case in addition to the method
     apply_action() introduced here.
 
     apply_action():
-    (similar to use_message_data() of RobotEmitterReceiverCSV)
+    (similar to use_message_data() of CSVRobot)
     This method takes an action argument and translates it to a robot
     action, e.g. motor speeds.
     Note that apply_action() is called during step().
     """
     def __init__(self, timestep=None):
-        super(RobotSupervisor, self).__init__()
+        super(RobotSupervisorEnv, self).__init__()
 
         if timestep is None:
             self.timestep = int(self.getBasicTimeStep())

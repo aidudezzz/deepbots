@@ -1,10 +1,11 @@
-from warnings import warn, simplefilter
+from warnings import simplefilter, warn
+
 from controller import Robot
 
 
-class RobotEmitterReceiver:
+class EmitterReceiverRobot(Robot):
     """
-    This RobotEmitterReceiver implements only the most basic run method, that
+    This EmitterReceiverRobot implements only the most basic run method, that
     steps the robot and calls the handle_emitter, handle_receiver methods that
     are needed for communication with the supervisor.
 
@@ -12,7 +13,7 @@ class RobotEmitterReceiver:
     and the handle_emitter, handle_receiver, initialize_comms methods are all
     abstract and need to be implemented according to their docstrings. For a
     simpler RobotController that implements the methods in a basic form
-    inherit the RobotEmitterReceiverCSV subclass or other emitter-receiver
+    inherit the CSVRobot subclass or other emitter-receiver
     subclasses.
     """
     def __init__(self,
@@ -35,10 +36,10 @@ class RobotEmitterReceiver:
 
         :param timestep: int, positive or None
         """
-        self.robot = Robot()
+        super().__init__()
 
         if timestep is None:
-            self.timestep = int(self.robot.getBasicTimeStep())
+            self.timestep = int(self.getBasicTimeStep())
         else:
             self.timestep = timestep
 
@@ -78,8 +79,8 @@ class RobotEmitterReceiver:
 
         A basic example implementation can be:
 
-        emitter = self.robot.getDevice("emitter")
-        receiver = self.robot.getDevice("receiver")
+        emitter = self.getDevice("emitter")
+        receiver = self.getDevice("receiver")
         receiver.enable(self.timestep)
         return emitter, receiver
 
@@ -113,6 +114,6 @@ class RobotEmitterReceiver:
 
         This method should be called by a robot manager to run the robot.
         """
-        while self.robot.step(self.timestep) != -1:
+        while self.step(self.timestep) != -1:
             self.handle_receiver()
             self.handle_emitter()

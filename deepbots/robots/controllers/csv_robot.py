@@ -1,10 +1,10 @@
 from collections.abc import Iterable
 
-from deepbots.robots.controllers.robot_emitter_receiver import \
-    RobotEmitterReceiver
+from deepbots.robots.controllers.emitter_receiver_robot import \
+    EmitterReceiverRobot
 
 
-class RobotEmitterReceiverCSV(RobotEmitterReceiver):
+class CSVRobot(EmitterReceiverRobot):
     """
     Basic implementation of a robot that can emit and receive messages to/from
     the supervisor in string utf-8 form that are Comma Separated Values,
@@ -38,8 +38,8 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
             supervisor node
         :return: The initialized emitter and receiver references
         """
-        emitter = self.robot.getDevice("emitter")
-        receiver = self.robot.getDevice("receiver")
+        emitter = self.getDevice(emitter_name)
+        receiver = self.getDevice(receiver_name)
         receiver.enable(self.timestep)
         return emitter, receiver
 
