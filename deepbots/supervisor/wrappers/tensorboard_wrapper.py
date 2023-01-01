@@ -29,7 +29,7 @@ class TensorboardLogger(SupervisorEnv):
         self.file_writer = SummaryWriter(log_dir, flush_secs=30)
 
     def step(self, action):
-        observation, reward, isDone, info = self.controller.step(action)
+        observation, reward, is_done, info = self.controller.step(action)
 
         if (self.v_action > 1):
             self.file_writer.add_histogram(
@@ -47,7 +47,7 @@ class TensorboardLogger(SupervisorEnv):
             self.file_writer.add_scalar("Rewards/Per Global Step", reward,
                                         self.step_global)
 
-        if (isDone):
+        if (is_done):
             self.file_writer.add_scalar(
                 "Is Done/Per Reset step",
                 self.step_cntr,
@@ -60,13 +60,13 @@ class TensorboardLogger(SupervisorEnv):
         self.step_cntr += 1
         self.step_global += 1
 
-        return observation, reward, isDone, info
+        return observation, reward, is_done, info
 
     def is_done(self):
-        isDone = self.controller.is_done()
+        is_done = self.controller.is_done()
 
         self.file_writer.flush()
-        return isDone
+        return is_done
 
     def get_observations(self):
         obs = self.controller.get_observations()

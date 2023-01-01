@@ -10,7 +10,7 @@ class KeyboardPrinter(SupervisorEnv):
         self.keyboard.enable(self.controller.timestep)
 
     def step(self, action):
-        observation, reward, isDone, info = self.controller.step(action)
+        observation, reward, is_done, info = self.controller.step(action)
         key = self.keyboard.getKey()
         # DEBUG CONTROLS
         if key == Keyboard.CONTROL + ord("A"):
@@ -23,13 +23,13 @@ class KeyboardPrinter(SupervisorEnv):
             print()
             print("Observations: ", self.controller.observation)
 
-        return observation, reward, isDone, info
+        return observation, reward, is_done, info
 
     def is_done(self):
-        isDone = self.controller.is_done()
-        if isDone:
+        is_done = self.controller.is_done()
+        if is_done:
             print("Done")
-        return isDone
+        return is_done
 
     def get_observations(self):
         return self.controller.get_observations()
