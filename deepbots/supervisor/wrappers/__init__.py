@@ -1,2 +1,2 @@
-from deepbots.supervisor.wrappers.keyboard_printer import KeyboardPrinter
-from deepbots.supervisor.wrappers.tensorboard_wrapper import TensorboardLogger
+from deepbots.supervisor.wrappers.keyboard_printer import keyboard_printer
+from deepbots.supervisor.wrappers.tensorboard_wrapper import tensorboard_wrapper
