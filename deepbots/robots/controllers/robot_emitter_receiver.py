@@ -2,7 +2,7 @@ from warnings import warn, simplefilter
 from controller import Robot
 
 
-class RobotEmitterReceiver(Robot):
+class RobotEmitterReceiver:
     """
     This RobotEmitterReceiver implements only the most basic run method, that
     steps the robot and calls the handle_emitter, handle_receiver methods that
@@ -35,10 +35,10 @@ class RobotEmitterReceiver(Robot):
 
         :param timestep: int, positive or None
         """
-        super().__init__()
+        self.robot = Robot()
 
         if timestep is None:
-            self.timestep = int(self.getBasicTimeStep())
+            self.timestep = int(self.robot.getBasicTimeStep())
         else:
             self.timestep = timestep
 
@@ -78,8 +78,8 @@ class RobotEmitterReceiver(Robot):
 
         A basic example implementation can be:
 
-        emitter = self.getDevice("emitter")
-        receiver = self.getDevice("receiver")
+        emitter = self.robot.getDevice("emitter")
+        receiver = self.robot.getDevice("receiver")
         receiver.enable(self.timestep)
         return emitter, receiver
 
@@ -113,6 +113,6 @@ class RobotEmitterReceiver(Robot):
 
         This method should be called by a robot manager to run the robot.
         """
-        while self.step(self.timestep) != -1:
+        while self.robot.step(self.timestep) != -1:
             self.handle_receiver()
             self.handle_emitter()
