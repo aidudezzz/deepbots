@@ -1,11 +1,11 @@
 from collections.abc import Iterable
 from warnings import warn, simplefilter
 
-from deepbots.supervisor.controllers.deepbots_supervisor_env import DeepbotsSupervisorEnv
+from deepbots.supervisor.controllers.supervisor_env import DeepbotsEnv
 from controller import Supervisor
 
 
-class EmitterReceiverSupervisorEnv(DeepbotsSupervisorEnv):
+class SupervisorEmitterReceiver(DeepbotsEnv):
     """
     This is the base class for the emitter - receiver scheme.
 
@@ -26,7 +26,7 @@ class EmitterReceiverSupervisorEnv(DeepbotsSupervisorEnv):
             supervisor node
         :param timestep: The supervisor controller timestep
         """
-        super(EmitterReceiverSupervisorEnv, self).__init__()
+        super(SupervisorEmitterReceiver, self).__init__()
 
         if timestep is None:
             self.timestep = int(self.getBasicTimeStep())
@@ -118,7 +118,7 @@ class EmitterReceiverSupervisorEnv(DeepbotsSupervisorEnv):
         self._timestep = int(value)
 
 
-class SupervisorCSV(EmitterReceiverSupervisorEnv):
+class SupervisorCSV(SupervisorEmitterReceiver):
     """
     This class implements the emitter-receiver scheme using Comma Separated
     Values.
