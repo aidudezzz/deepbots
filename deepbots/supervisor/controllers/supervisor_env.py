@@ -2,7 +2,7 @@ import gym
 from controller import Supervisor
 
 
-class DeepbotsEnv(Supervisor, gym.Env):
+class SupervisorEnv(Supervisor, gym.Env):
     """
     This class is the highest class in deepbots class hierarchy, inheriting
     both the Webots Supervisor controller and the basic gym.Env.

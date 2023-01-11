@@ -1,9 +1,9 @@
 from warnings import warn, simplefilter
-from deepbots.supervisor.controllers.supervisor_env import DeepbotsEnv
+from deepbots.supervisor.controllers.supervisor_env import SupervisorEnv
 from controller import Supervisor
 
 
-class RobotSupervisor(DeepbotsEnv):
+class RobotSupervisor(SupervisorEnv):
     """
     The RobotSupervisor class implements both a robot controller and a
     supervisor RL environment, referred to as Robot-Supervisor scheme.
@@ -18,7 +18,7 @@ class RobotSupervisor(DeepbotsEnv):
 
     The user needs to implement the regular methods for the environment,
     reward(), get_observations(), get_default_observation, etc., from
-    DeepbotsEnv according to their use-case in addition to the method
+    SupervisorEnv according to their use-case in addition to the method
     apply_action() introduced here.
 
     apply_action():
