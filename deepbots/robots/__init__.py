@@ -1,2 +1,1 @@
-from deepbots.robots.controllers.csv_robot import CSVRobot
-from deepbots.robots.controllers.emitter_receiver_robot import EmitterReceiverRobot
+from deepbots.robots.controllers.robot_emitter_receiver_csv import RobotEmitterReceiverCSV

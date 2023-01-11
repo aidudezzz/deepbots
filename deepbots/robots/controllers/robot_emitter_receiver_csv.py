@@ -1,10 +1,10 @@
 from collections.abc import Iterable
 
-from deepbots.robots.controllers.emitter_receiver_robot import \
-    EmitterReceiverRobot
+from deepbots.robots.controllers.robot_emitter_receiver import \
+    RobotEmitterReceiver
 
 
-class CSVRobot(EmitterReceiverRobot):
+class RobotEmitterReceiverCSV(RobotEmitterReceiver):
     """
     Basic implementation of a robot that can emit and receive messages to/from
     the supervisor in string utf-8 form that are Comma Separated Values,

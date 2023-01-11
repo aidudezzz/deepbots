@@ -2,9 +2,9 @@ from warnings import warn, simplefilter
 from controller import Robot
 
 
-class EmitterReceiverRobot(Robot):
+class RobotEmitterReceiver(Robot):
     """
-    This EmitterReceiverRobot implements only the most basic run method, that
+    This RobotEmitterReceiver implements only the most basic run method, that
     steps the robot and calls the handle_emitter, handle_receiver methods that
     are needed for communication with the supervisor.
 
@@ -12,7 +12,7 @@ class EmitterReceiverRobot(Robot):
     and the handle_emitter, handle_receiver, initialize_comms methods are all
     abstract and need to be implemented according to their docstrings. For a
     simpler RobotController that implements the methods in a basic form
-    inherit the CSVRobot subclass or other emitter-receiver
+    inherit the RobotEmitterReceiverCSV subclass or other emitter-receiver
     subclasses.
     """
     def __init__(self,

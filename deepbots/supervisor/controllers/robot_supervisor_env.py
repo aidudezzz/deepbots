@@ -22,7 +22,7 @@ class RobotSupervisorEnv(DeepbotsSupervisorEnv):
     apply_action() introduced here.
 
     apply_action():
-    (similar to use_message_data() of CSVRobot)
+    (similar to use_message_data() of RobotEmitterReceiverCSV)
     This method takes an action argument and translates it to a robot
     action, e.g. motor speeds.
     Note that apply_action() is called during step().
