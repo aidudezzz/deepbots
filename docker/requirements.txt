@@ -3,5 +3,5 @@ numpy==1.22.0
 tensorflow==2.9.3
 stable-baselines3
 ray==1.2.0
-torch==1.8.1
+torch==1.13.1
 wandb
