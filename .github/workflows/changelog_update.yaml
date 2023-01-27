@@ -1,0 +1,30 @@
+name: Generate Changelog
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate_changelog:
+    name: Update Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v2
+
+      - name: Generate changelog
+        uses: charmixer/auto-changelog-action@v1.1
+        with:
+          token: ${{ secrets.AIDUDEZZ_BOT_TOKEN }}
+
+      - name: Commit files
+        run: |
+          git config --local user.email ${{ secrets.AIDUDEZZZ_BOT_EMAIL }}
+          git config --local user.name ${{ secrets.AIDUDEZZZ_BOT_USER }}
+          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo "push=true" >> $GITHUB_ENV || echo "No changes to CHANGELOG.md"
+      - name: Push changes
+        if: env.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.AIDUDEZZ_BOT_TOKEN }}
+          branch: main
