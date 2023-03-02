@@ -1,7 +1,7 @@
 from controller import Keyboard
-
 from deepbots.supervisor.controllers.deepbots_supervisor_env import \
     DeepbotsSupervisorEnv
+
 
 
 class KeyboardPrinter(DeepbotsSupervisorEnv):

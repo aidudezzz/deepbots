@@ -1,5 +1,4 @@
 from collections.abc import Iterable
-
 from deepbots.supervisor.controllers.emitter_receiver_supervisor_env import \
     EmitterReceiverSupervisorEnv
 

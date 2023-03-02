@@ -47,8 +47,8 @@ class EmitterReceiverSupervisorEnv(DeepbotsSupervisorEnv):
             supervisor node
         :return: The initialized emitter and receiver references
         """
-        emitter = self.getEmitter(emitter_name)
-        receiver = self.getReceiver(receiver_name)
+        emitter = self.getDevice(emitter_name)
+        receiver = self.getDevice(receiver_name)
         receiver.enable(self.timestep)
         return emitter, receiver
 

@@ -1,6 +1,5 @@
 import numpy as np
 from tensorboardX import SummaryWriter
-
 from deepbots.supervisor.controllers.deepbots_supervisor_env import \
     DeepbotsSupervisorEnv
 

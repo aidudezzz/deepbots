@@ -1,5 +1,4 @@
 from warnings import simplefilter, warn
-
 from controller import Robot
 
 
