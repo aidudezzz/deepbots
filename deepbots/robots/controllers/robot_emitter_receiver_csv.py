@@ -24,8 +24,7 @@ class RobotEmitterReceiverCSV(RobotEmitterReceiver):
             robot node, defaults to "receiver"
         :param timestep: The robot controller timestep, defaults to None
         """
-        super().__init__(emitter_name, receiver_name,
-                         timestep)
+        super().__init__(emitter_name, receiver_name, timestep)
 
     def initialize_comms(self, emitter_name, receiver_name):
         """
