@@ -3,7 +3,6 @@ from setuptools import find_packages, setup
 DESCRIPTION = "A wrapper framework for Reinforcement Learning in Webots \
     simulator"
 
-
 with open("requirements.txt") as requirements_file:
     requirements = requirements_file.read().splitlines()
 
@@ -14,7 +13,7 @@ setup(
     name="deepbots",
     author="aidudezzz",
     author_email="deepbots@protonmail.com",
-    version="1.0.0",
+    version="0.1.3-dev4",
     description=DESCRIPTION,
     long_description=readme,
     long_description_content_type="text/markdown",
