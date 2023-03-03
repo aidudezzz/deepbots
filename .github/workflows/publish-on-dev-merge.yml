@@ -1,5 +1,4 @@
 name: Publish Python on TestPyPi
-
 on:
   push:
     tags:
@@ -7,7 +6,6 @@ on:
 
 jobs:
   build-n-publish:
-    name: Publish Python on TestPyPi
     runs-on: ubuntu-latest
 
     steps:

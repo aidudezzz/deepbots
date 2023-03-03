@@ -1,5 +1,4 @@
 name: Release on PyPi
-
 on:
   push:
     tags:
@@ -8,7 +7,6 @@ on:
 
 jobs:
   build-n-publish:
-    name: Release on PyPi
     runs-on: ubuntu-latest
 
     steps:
