@@ -4,6 +4,7 @@
 
 [![Version](https://img.shields.io/pypi/v/deepbots?color=green)](https://pypi.org/project/deepbots/)
 [![Dev Version](https://img.shields.io/github/v/tag/aidudezzz/deepbots?include_prereleases&label=test-pypi&color=green)](https://test.pypi.org/project/deepbots/)
+[![Documentation Status](https://readthedocs.org/projects/deepbots/badge/?version=latest)](https://deepbots.readthedocs.io/en/latest/?badge=latest)
 [![Downloads](https://static.pepy.tech/personalized-badge/deepbots?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/deepbots)
 [![License](https://img.shields.io/github/license/aidudezzz/deepbots?color=green)](https://github.com/aidudezzz/deepbots/blob/dev/LICENSE)
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
