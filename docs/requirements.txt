@@ -57,6 +57,4 @@ sphinxcontrib-serializinghtml==1.1.5
 urllib3==1.26.9
     # via requests
 setuptools==65.5.0
-gym==0.21
-tensorboardX
 
