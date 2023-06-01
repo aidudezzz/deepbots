@@ -10,16 +10,12 @@ Welcome to *deepbots*' documentation!
 Contents
 --------
 
-.. automodule:: deepbots
+.. automodule:: deepbots.robots.__init__.py
+    :members:
+
+.. automodule:: deepbots.supervisor.__init__.py
     :members:
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
