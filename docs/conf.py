@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "Basic Sphinx Example Project"
-copyright = "2022, Read the Docs core team"
-author = "Read the Docs core team"
+project = "deepbots"
+copyright = "GNU General Public License v3.0"
+author = "aidudezzz"
 
 
 # -- General configuration ---------------------------------------------------
