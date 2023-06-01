@@ -13,7 +13,7 @@ how to :ref:`installation` the project.
 Contents
 --------
 
-.. automodule:: my_project.main
+.. automodule:: deepbots
     :members:
 
 .. toctree::
