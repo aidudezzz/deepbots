@@ -10,11 +10,13 @@ Welcome to *deepbots*' documentation!
 Contents
 --------
 
-.. automodule:: deepbots.robots.controllers.csv_robot
+.. automodule:: deepbots.robots.__init__
     :members:
+    :imported-members:
 
-.. automodule:: deepbots.robots.controllers.emitter_receiver_robot
+.. automodule:: deepbots.supervisor.__init__
     :members:
+    :imported-members:
 
 .. toctree::
    :maxdepth: 2
