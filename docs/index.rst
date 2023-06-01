@@ -1,5 +1,5 @@
 Welcome to *deepbots*' documentation!
-===================================
+=====================================
 
 **Deepbots** TODO description
 
