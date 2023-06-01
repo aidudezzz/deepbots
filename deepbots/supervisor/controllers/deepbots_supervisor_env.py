@@ -50,7 +50,7 @@ class DeepbotsSupervisorEnv(Supervisor, gym.Env):
         Default, problem-agnostic, implementation of reset method,
         using Webots-provided methods.
 
-        *Note that this works properly only with Webots versions >R2020b
+        \*Note that this works properly only with Webots versions >R2020b
         and must be overridden with a custom reset method when using
         earlier versions. It is backwards compatible due to the fact
         that the new reset method gets overridden by whatever the user
