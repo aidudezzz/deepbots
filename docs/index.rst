@@ -13,8 +13,16 @@ how to :ref:`installation` the project.
 Contents
 --------
 
-.. toctree::
+.. automodule:: my_project.main
+    :members:
 
-   Home <self>
-   usage
-   api
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
