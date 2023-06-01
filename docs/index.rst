@@ -10,11 +10,11 @@ Welcome to *deepbots*' documentation!
 Contents
 --------
 
-.. automodule:: deepbots.robots.__init__
+.. automodule:: deepbots.robots
     :members:
     :imported-members:
 
-.. automodule:: deepbots.supervisor.__init__
+.. automodule:: deepbots.supervisor
     :members:
     :imported-members:
 
