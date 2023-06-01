@@ -10,10 +10,10 @@ Welcome to *deepbots*' documentation!
 Contents
 --------
 
-.. automodule:: deepbots.robots.__init__
+.. automodule:: deepbots.robots.controllers.csv_robot
     :members:
 
-.. automodule:: deepbots.supervisor.__init__
+.. automodule:: deepbots.robots.controllers.emitter_receiver_robot
     :members:
 
 .. toctree::
