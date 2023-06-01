@@ -8,7 +8,7 @@ how to :ref:`installation` the project.
 
 .. note::
 
-..   This project is under active development.
+   The documentation site is under active development.
 
 Contents
 --------
