@@ -50,6 +50,7 @@ epub_show_urls = "footnote"
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+# This is needed to ignore the webots imports "from controller..."
 autodoc_mock_imports = ["controller"]
 
 # -- Options for HTML output -------------------------------------------------
