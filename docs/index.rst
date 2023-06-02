@@ -73,5 +73,7 @@ not responsible for any use that may be made of the information it contains.
 .. autosummary::
    :recursive:
    :toctree: generated
+   :maxdepth: 8
+   :caption: Classes index:
 
    deepbots
