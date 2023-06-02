@@ -24,7 +24,6 @@ Contents
 
    Home <self>
    installation
-   usage
 
 
 .. _Official resources:
@@ -79,15 +78,3 @@ not responsible for any use that may be made of the information it contains.
 .. automodule:: deepbots
     :members:
     :imported-members:
-
-.. automodule:: deepbots.robots
-    :members:
-    :imported-members:
-
-.. automodule:: deepbots.supervisor
-    :members:
-    :imported-members:
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
