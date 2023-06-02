@@ -64,6 +64,8 @@ issue please use `pip install setuptools==65.5.0` before installing deepbots.
 - On [the deepworlds repository](https://github.com/aidudezzz/deepworlds) you
   can find examples of deepbots being used. <br>Feel free to contribute your
   own!
+- On [the deepbots documentation site](https://deepbots.readthedocs.io/)
+  you can find the framework's documentation
 
 ## Citation
 
