@@ -74,4 +74,4 @@ not responsible for any use that may be made of the information it contains.
    :recursive:
    :toctree: generated
 
-   deepbots.robots.controllers
+   deepbots
