@@ -70,7 +70,7 @@ being that the agent, which is responsible to choose an action, runs on the
 `Supervisor` and the observations are acquired by the `Robot`. The goal of
 *deepbots* is to bridge the gap between the gym environment and the Webots
 robot simulator. More specifically,
-:ref:`DeepbotsSupervisorEnv </deepbots/deepbots.supervisor.controllers.rst#deepbotssupervisorenv>`
+:ref:`DeepbotsSupervisorEnv </deepbots/deepbots.supervisor.controllers.rst#_deepbotssupervisorenv>`
 is the interface which is used by the Reinforcement Learning algorithms and
 follows gym's environment logic. *Deepbots* provides different levels of
 abstraction according to the user's needs. Moreover, the framework provides
