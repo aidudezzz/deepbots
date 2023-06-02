@@ -67,13 +67,14 @@ which returns an initial `observation`."
 
 *Deepbots* follows this exact agent-environment loop with the only difference
 being that the agent, which is responsible to choose an action, runs on the
-Supervisor and the observations are acquired by the robot. The goal of
+`Supervisor` and the observations are acquired by the `Robot`. The goal of
 *deepbots* is to bridge the gap between the gym environment and the Webots
-robot simulator.. More specifically, `DeepbotsSupervisorEnv` is the interface
-which is used by the Reinforcement Learning algorithms and follows gym's
-environment logic. *Deepbots* provides different levels of abstraction
-according to the user's needs. Moreover, the framework provides different
-wrappers for additional functionalities.
+robot simulator. More specifically,
+:ref:`DeepbotsSupervisorEnv </deepbots/deepbots.supervisor.controllers.rst#deepbots.supervisor.DeepbotsSupervisorEnv>`
+is the interface which is used by the Reinforcement Learning algorithms and
+follows gym's environment logic. *Deepbots* provides different levels of
+abstraction according to the user's needs. Moreover, the framework provides
+different wrappers for additional functionalities.
 
 *Deepbots* also provides a default implementation of the `reset()` method,
 leveraging Webots' built-in simulation reset functions, removing the need for
@@ -144,9 +145,9 @@ As mentioned earlier, in use-cases where the observation transmitted between
 the `Robot` and the `Supervisor` is high-dimensional or long, e.g. high
 resolution images taken from a camera, a significant overhead is introduced.
 This is circumvented by inheriting and implementing the partially abstract
-`RobotSupervisorEnv` that combines the `Robot controller` and the
+`RobotSupervisorEnv` that combines the `Robot Controller` and the
 `Supervisor Controller` into one, forgoing all `emitter`/`receiver`
-communication. This new controller runs on the `Robot`, but requires
+communication. This controller runs on the `Robot`, but requires
 `Supervisor` privileges and is limited to one `Robot` - one `Supervisor`.
 
 You can follow the
