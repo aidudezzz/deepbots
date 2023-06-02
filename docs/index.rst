@@ -14,6 +14,7 @@ Contents
 
    Home <self>
    installation
+   usage
 
 .. automodule:: deepbots.robots
     :members:
