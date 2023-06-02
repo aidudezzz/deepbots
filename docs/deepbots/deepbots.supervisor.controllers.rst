@@ -11,13 +11,12 @@ deepbots.supervisor.controllers
    :undoc-members:
    :show-inheritance:
 
-.. autoclass:: deepbots.supervisor.CSVSupervisorEnv
+.. autoclass:: deepbots.supervisor.EmitterReceiverSupervisorEnv
    :members:
    :undoc-members:
    :show-inheritance:
 
-
-.. autoclass:: deepbots.supervisor.EmitterReceiverSupervisorEnv
+.. autoclass:: deepbots.supervisor.CSVSupervisorEnv
    :members:
    :undoc-members:
    :show-inheritance:
