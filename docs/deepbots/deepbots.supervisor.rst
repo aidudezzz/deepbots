@@ -2,7 +2,6 @@ deepbots.supervisor
 ===================
 
 .. toctree::
-   :imported-members:
    :maxdepth: 2
 
 
