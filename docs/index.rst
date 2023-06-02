@@ -31,12 +31,6 @@ Contents
    deepbots/modules
    deepbots/deepbots
 
-   deepbots/supervisor
-      deepbots/supervisor.controllers
-      deepbots/supervisor.wrappers
-   deepbots/robots
-      deepbots/robots.controllers
-
 Official resources
 ------------------
 
