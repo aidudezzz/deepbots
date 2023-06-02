@@ -4,6 +4,10 @@
 .. image:: https://raw.githubusercontent.com/aidudezzz/deepbots-swag/main/logo/deepbots_full.png
    :alt: Deepbots logo
 
+.. note::
+
+   The documentation site is under active development.
+
 `Deepbots <https://github.com/aidudezzz/deepbots>`_ is a simple framework
 which is used as "middleware" between the free and open-source
 `Cyberbotics' Webots <https://cyberbotics.com>`_ robot simulator
@@ -14,10 +18,6 @@ as the most used interface between the actual application and the RL algorithm.
 **Deepbots is a framework which follows the gym interface logic and bridges the
 gap between the gym environment and the simulator to enable you to easily
 create custom RL environments in Webots.**
-
-.. note::
-
-   The documentation site is under active development.
 
 Contents
 --------
