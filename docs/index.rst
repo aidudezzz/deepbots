@@ -32,6 +32,7 @@ Contents
 .. toctree::
    :maxdepth: 2
    :caption: Reference
+
    deepbots/deepbots
 
 Official resources
