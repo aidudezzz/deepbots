@@ -1,18 +1,7 @@
 deepbots.robots package
 =======================
 
-Subpackages
------------
-
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
    deepbots.robots.controllers
-
-Module contents
----------------
-
-.. automodule:: deepbots.robots
-   :members:
-   :undoc-members:
-   :show-inheritance:
