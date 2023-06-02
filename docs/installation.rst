@@ -39,12 +39,14 @@ Install deepbots
 Deepbots can be installed through the package installer
 `pip <https://pip.pypa.io/en/stable>`_ running the following command:
 
-.. code-block:: bash
+.. code-block:: console
 
    pip install deepbots
 
-If you encounter `this <https://github.com/aidudezzz/deepbots/issues/143>`_
-issue please use :code:`pip install setuptools==65.5.0` before installing deepbots.
+.. note::
+
+   If you encounter `this <https://github.com/aidudezzz/deepbots/issues/143>`_
+   issue please use :code:`pip install setuptools==65.5.0` before installing deepbots.
 
 .. role:: bash(code)
    :language: bash
