@@ -23,9 +23,11 @@ Contents
 --------
 
 .. toctree::
+   :maxdepth: 3
 
    Home <self>
    installation
+   deepbots
 
 Official resources
 ------------------
