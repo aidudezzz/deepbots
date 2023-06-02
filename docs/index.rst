@@ -76,4 +76,4 @@ not responsible for any use that may be made of the information it contains.
    :titlesonly:
    :caption: Classes index:
 
-   deepbots.robots
+   deepbots
