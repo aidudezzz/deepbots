@@ -27,7 +27,7 @@ Contents
 
    Home <self>
    installation
-   deepbots
+   deepbots/
 
 Official resources
 ------------------
@@ -68,3 +68,10 @@ This project has received funding from the European Union's Horizon 2020
 research and innovation programme under grant agreement No 871449 (OpenDR).
 This publication reflects the authors’ views only. The European Commission is
 not responsible for any use that may be made of the information it contains.
+
+Indices and tables
+-------------------
+
+* :ref:`genindex`
+* :ref:`search`
+* :ref:`modindex`
