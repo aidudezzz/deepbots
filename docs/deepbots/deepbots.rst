@@ -2,7 +2,7 @@ deepbots
 =========
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
-   deepbots.robots
+   deepbots.robots.controllers
    deepbots.supervisor
