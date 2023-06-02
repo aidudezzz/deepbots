@@ -72,5 +72,8 @@ not responsible for any use that may be made of the information it contains.
 
 .. autosummary::
    :recursive:
+   :toctree: generated
+   :titlesonly:
+   :caption: Classes index:
 
-   deepbots
+   deepbots.robots
