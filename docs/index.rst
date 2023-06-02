@@ -1,4 +1,4 @@
-**deepbots** framework docs - Reinforcement Learning in Webots
+**Deepbots** framework docs - Reinforcement Learning in Webots
 ==============================================================
 
 .. image:: https://raw.githubusercontent.com/aidudezzz/deepbots-swag/main/logo/deepbots_full.png
