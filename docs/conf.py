@@ -31,6 +31,7 @@ extensions = [
     "sphinx.ext.autosummary",
     'sphinx.ext.viewcode',
     "sphinx.ext.intersphinx",
+    "sphinx_copybutton"
 ]
 
 intersphinx_mapping = {
@@ -56,7 +57,12 @@ autodoc_mock_imports = ["controller"]
 # Order class methods on how they appear in the source code
 autodoc_member_order = "bysource"
 
+
 # -- Options for HTML output -------------------------------------------------
+
+def setup(app):
+    app.add_css_file("css/baselines_theme.css")
+
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
