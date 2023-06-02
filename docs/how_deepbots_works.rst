@@ -1,49 +1,53 @@
-## How it works
+How deepbots works
+==================
+
+Here you can find a high-level explanation on how the framework is structured
+and how it actually works.
 
 First of all let's set up a simple glossary:
 
-- `World`: Webots uses a tree structure to represent the different entities in
+* `World`: Webots uses a tree structure to represent the different entities in
   the scene. The World is the root entity which contains all the
   entities/nodes. For example, the world contains the Supervisor and Robot
   entities as well as other objects which might be included in the scene.
 
-- `Supervisor`: The Supervisor is an entity which has access to all other
+* `Supervisor`: The Supervisor is an entity which has access to all other
   entities of the world, while having no physical presence in it. For example,
   the Supervisor knows the exact position of all the entities of the world and
   can manipulate them. Additionally, the Supervisor has the Supervisor
   Controller as one of its child nodes.
 
-- `Supervisor Controller`: The Supervisor Controller is a python script which
+* `Supervisor Controller`: The Supervisor Controller is a python script which
   is responsible for the Supervisor. For example, in the Supervisor Controller
   script the distance between two entities in the world can be calculated.
 
-- `Robot`: The Robot is an entity that represents a robot in the world. It
+* `Robot`: The Robot is an entity that represents a robot in the world. It
   might have sensors and other active components, like motors, etc. as child
   entities. Also, one of its children is the Robot Controller. For example,
-  [epuck](https://cyberbotics.com/doc/guide/epuck) and
-  [TIAGo](https://cyberbotics.com/doc/guide/tiago-iron) are robots.
+  `epuck <https://cyberbotics.com/doc/guide/epuck>`_ and
+  `TIAGo <https://cyberbotics.com/doc/guide/tiago-iron>`_ are robots.
 
-- `Robot Controller`: The Robot Controller is a python script which is
+* `Robot Controller`: The Robot Controller is a python script which is
   responsible for the Robot's movement and sensors. With the Robot Controller
   it is possible to observe the world and act accordingly.
-- `Environment`: The Environment is the interface as described by the OpenAI
+* `Environment`: The Environment is the interface as described by the OpenAI
   gym. The Environment interface has the following methods:
 
-  - `get_observations()`: Return the observations of the robot. For example,
+  * `get_observations()`: Return the observations of the robot. For example,
     metrics from sensors, a camera image etc.
 
-  - step(action): Each timestep, the agent chooses an action, and the
+  * step(action): Each timestep, the agent chooses an action, and the
     environment returns the observation, the reward and the state of the
     problem (done or not).
 
-  - `get_reward(action)`: The reward the agent receives as a result of their
+  * `get_reward(action)`: The reward the agent receives as a result of their
     action.
-  - `is_done()`: Whether it’s time to reset the environment. Most (but not all)
+  * `is_done()`: Whether it’s time to reset the environment. Most (but not all)
     tasks are divided up into well-defined episodes, and done being True
     indicates the episode has terminated. For example, if a robot has the task
     to reach a goal, then the done condition might happen when the robot
     "touches" the goal.
-  - `reset()`: Used to reset the world to the initial state.
+  * `reset()`: Used to reset the world to the initial state.
 
 In order to set up a task in Deepbots it is necessary to understand the
 intention of the OpenAI gym environment. According to the OpenAI gym
@@ -73,7 +77,8 @@ the user to implement reset procedures for simpler use-cases. It is always
 possible to override this method and implement any custom reset procedure, as
 needed.
 
-#### Emitter - receiver scheme
+Emitter - receiver scheme
+-------------------------
 
 Currently, the communication between the `Supervisor` and the `Robot` is
 achieved via an `emitter` and a `receiver`. Separating the `Supervisor` from
@@ -85,7 +90,7 @@ prohibiting in use-cases where the observations are high-dimensional or long,
 such as camera images. Deepbots provides another partially abstract class that
 combines the `Supervisor` and the `Robot` into one controller and circumvents
 that issue, while being less flexible, which is discussed
-[later](#combined-robot-supervisor-scheme).
+:ref:`later <combined>`.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/deepbots_overview.png">
@@ -106,14 +111,17 @@ Euclidean distance, only the `Supervisor` can calculate it, because it has
 access to all entities in the `World`.
 
 You can follow the
-[emitter-receiver scheme tutorial](https://github.com/aidudezzz/deepbots-tutorials/blob/master/emitterReceiverSchemeTutorial/README.md)
+`emitter-receiver scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/blob/master/emitterReceiverSchemeTutorial/README.md>`_
 to get started and work your way up from there.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/workflow_diagram.png">
 </p>
 
-#### Combined Robot-Supervisor scheme
+.. _combined:
+
+Combined Robot-Supervisor scheme
+--------------------------------
 
 As mentioned earlier, in use-cases where the observation transmitted between
 the `Robot` and the `Supervisor` is high-dimensional or long, e.g. high
@@ -125,11 +133,12 @@ communication. This new controller runs on the `Robot`, but requires
 `Supervisor` privileges and is limited to one `Robot`, one `Supervisor`.
 
 You can follow the
-[robot-supervisor scheme tutorial](https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial)
+`robot-supervisor scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_
 to get started and work your way up from there. We recommended this
 tutorial to get started with deepbots.
 
-### Abstraction Levels
+Abstraction Levels
+------------------
 
 The deepbots framework has been created mostly for educational purposes. The
 aim of the framework is to enable people to use Reinforcement Learning in
@@ -141,7 +150,7 @@ the top level of the abstraction hierarchy is the `SupervisorEnv` which is the
 OpenAI gym interface. Below that level there are partially implemented classes
 with common functionality. These implementations aim to hide the communication
 between the `Supervisor` and the `Robot`, as described in the two different
-schemes ealier. Similarly, in the `emitter`/`receiver` scheme the `Robot` also
+schemes earlier. Similarly, in the `emitter`/`receiver` scheme the `Robot` also
 has different abstraction levels. According to their needs, users can choose
 either to process the messages received from the `Supervisor` themselves or use
 the existing implementations.

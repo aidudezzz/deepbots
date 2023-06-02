@@ -28,6 +28,7 @@ Contents
 
    Home <self>
    installation
+   how_deepbots_works
 
 .. toctree::
    :maxdepth: 2
