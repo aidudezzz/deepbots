@@ -35,7 +35,6 @@ Contents
    :caption: Reference
 
    deepbots/deepbots
-   modules
 
 Official resources
 ------------------
