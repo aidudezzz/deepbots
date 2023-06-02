@@ -6,3 +6,11 @@ deepbots
 
    deepbots.robots.controllers
    deepbots.supervisor
+
+Module contents
+---------------
+
+.. automodule:: deepbots
+   :members:
+   :undoc-members:
+   :show-inheritance:
