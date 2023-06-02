@@ -2,7 +2,9 @@ How *deepbots* works
 ====================
 
 Here you can find a high-level explanation on how the framework is structured
-and how it actually works.
+and how it actually works. Read on if you want to dig deeper into how and why
+*deepbots* works the way it does. If you want a quick start, visit our
+`beginner tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_!
 
 First of all let's set up a simple glossary:
 
@@ -70,9 +72,9 @@ being that the agent, which is responsible to choose an action, runs on the
 `Supervisor` and the observations are acquired by the `Robot`. The goal of
 *deepbots* is to bridge the gap between the gym environment and the Webots
 robot simulator. More specifically,
-:py:meth:`deepbots.supervisor.DeepbotsSupervisorEnv`
-is the interface which is used by the Reinforcement Learning algorithms and
-follows gym's environment logic. *Deepbots* provides different levels of
+:py:meth:`deepbots.supervisor.DeepbotsSupervisorEnv` is the main class that
+provides the interface which is used by the Reinforcement Learning algorithms
+and follows gym's environment logic. *Deepbots* provides different levels of
 abstraction according to the user's needs. Moreover, the framework provides
 different wrappers for additional functionalities.
 
@@ -81,6 +83,13 @@ leveraging Webots' built-in simulation reset functions, removing the need for
 the user to implement reset procedures for simpler use-cases. It is always
 possible to override this method and implement any custom reset procedure as
 needed by the use-case.
+
+**All-in-all to set up your gym environment you have to create a class that
+inherits one of deepbot's classes and implement the methods that are specific
+to your use-case and deepbots handles interfacing the environment with
+Webots. As your familiarity and/or needs grow, you can override deepbot's
+methods to alter functionality or inherit from classes higher up in the
+hierarchy.**
 
 *Deepbots* includes two schemes to set up your RL environment, the
 `emitter-receiver scheme` which separates the `Robot` and the `Supervisor` in
@@ -95,7 +104,7 @@ within the World. Communication between the two nodes is needed so the
 `Supervisor` can send the agent's actions to the `Robot` and for the `Robot`
 to send back its observations, and can be achieved in various ways.
 The main way communication between the `Supervisor` and the `Robot` is
-achieved is via an `emitter` and a `receiver`. By separating the `Supervisor`
+achieved is via `emitters` and `receivers`. By separating the `Supervisor`
 from the `Robot`, *deepbots* can fit a variety of use-cases, e.g. multiple
 `Robots` collecting experience and a `Supervisor` controlling them with a
 single agent. The way Webots implements `emitter`/`receiver` communication
@@ -121,12 +130,18 @@ uses it to choose an action. The `Supervisor` uses its `emitter` to broadcast
 the action, which the `Robot` receives with its `receiver`, closing the loop.
 
 It should be noted that the observation the agent
-uses might be extended from the `Supervisor` with additional values that the
-`Robot` might not have access to. For example, a model might use
-LiDAR sensors installed on the `Robot`, but also the Euclidean distance between
-the `Robot` and an object. As expected, the `Robot` cannot calculate the
-Euclidean distance, but the `Supervisor` can because it has access to all
-entities in the `World` and consequently their positions..
+uses might be extended in the `Supervisor` with additional values that the
+`Robot` might not have access to. For example, an observation might include
+LiDAR sensors values taken from the `Robot`, but also the Euclidean distance
+between the `Robot` and an object. As expected, the `Robot` cannot calculate
+the Euclidean distance, but the `Supervisor` can, because it has access to all
+entities in the `World` and their positions.
+
+You can take a look at the `Supervisor` and `Robot` classes implementations for
+this scheme in :py:meth:`deepbots.supervisor.EmitterReceiverSupervisorEnv`/
+:py:meth:`deepbots.supervisor.CSVSupervisorEnv` and
+:py:meth:`deepbots.robots.EmitterReceiverRobot`/:py:meth:`deepbots.robots.CSVRobot`
+respectively.
 
 You can follow the
 `emitter-receiver scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/blob/master/emitterReceiverSchemeTutorial/README.md>`_
@@ -150,10 +165,15 @@ This is circumvented by inheriting and implementing the partially abstract
 communication. This controller runs on the `Robot`, but requires
 `Supervisor` privileges and is limited to one `Robot` - one `Supervisor`.
 
+You can take a look at the combined `Robot - Supervisor` environment class in
+:py:meth:`deepbots.supervisor.RobotSupervisorEnv`, which acts both as the
+`Robot Controller`/`Supervisor Controller` and the `Environment` the RL agent
+interacts with.
+
 You can follow the
 `robot-supervisor scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_
-to get started and work your way up from there. We recommend this
-tutorial to get started with *deepbots*.
+to get started and work your way up from there. *We recommend this
+scheme/tutorial to get started with deepbots*.
 
 Abstraction Levels
 ------------------
@@ -165,7 +185,7 @@ as a wrapper of Webots exposing a gym-style interface. For this reason there
 are multiple levels of abstraction via a family of classes. For example, a user
 can choose if they want to use a CSV `emitter`/`receiver` or if they want to
 make a communication implementation from scratch. In the top level of the
-abstraction hierarchy is the `DeepbotsSupervisorEnv` which is the
+abstraction hierarchy is the `DeepbotsSupervisorEnv` class which is the main
 gym interface. Below that level there are partially implemented classes
 with common functionality. These implementations aim to hide the communication
 between the `Supervisor` and the `Robot` and other various functions needed by
