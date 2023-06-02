@@ -25,9 +25,6 @@ Contents
    Home <self>
    installation
 
-
-.. _Official resources:
-
 Official resources
 ------------------
 
@@ -37,8 +34,6 @@ Official resources
 - On `the deepworlds repository <https://github.com/aidudezzz/deepworlds>`_ you
   can find examples of deepbots being used. <br>Feel free to contribute your
   own!
-
-.. _Citation:
 
 Citation
 ________
@@ -69,9 +64,3 @@ This project has received funding from the European Union's Horizon 2020
 research and innovation programme under grant agreement No 871449 (OpenDR).
 This publication reflects the authors’ views only. The European Commission is
 not responsible for any use that may be made of the information it contains.
-
-.. autosummary::
-   :recursive:
-   :toctree:
-
-   deepbots

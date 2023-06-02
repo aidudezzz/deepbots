@@ -1,8 +1,6 @@
 Installation
 ============
 
-.. _Prerequisites:
-
 Prerequisites
 -------------
 
@@ -29,9 +27,6 @@ using the gym logic, so it can work with any backend library you choose
 to implement the agent with and any agent that already works with gym, such
 as `stable-baselines3 <https://github.com/DLR-RM/stable-baselines3>`_
 implementations.
-
-
-.. _Install deepbots:
 
 Install deepbots
 ----------------
