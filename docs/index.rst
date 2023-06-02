@@ -71,6 +71,15 @@ research and innovation programme under grant agreement No 871449 (OpenDR).
 This publication reflects the authors’ views only. The European Commission is
 not responsible for any use that may be made of the information it contains.
 
+.. autosummary::
+   :toctree: generated
+
+   deepbots.robots
+
+.. automodule:: deepbots
+    :members:
+    :imported-members:
+
 .. automodule:: deepbots.robots
     :members:
     :imported-members:
