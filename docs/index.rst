@@ -1,6 +1,10 @@
 Welcome to **deepbots**' documentation!
 =======================================
 
+.. image:: https://raw.githubusercontent.com/aidudezzz/deepbots-swag/main/logo/deepbots_full.png
+   :alt: Alternate text for the image
+   :width: 300
+   :height: 200
 
 `Deepbots <https://github.com/aidudezzz/deepbots>`_ is a simple framework
 which is used as "middleware" between the free and open-source
