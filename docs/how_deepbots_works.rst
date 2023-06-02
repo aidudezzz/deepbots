@@ -49,6 +49,7 @@ First of all let's set up a simple glossary:
     "touches" the goal.
   * `reset()`: Used to reset the world to the initial state.
 
+
 In order to set up a task in Deepbots it is necessary to understand the
 intention of the OpenAI gym environment. According to the OpenAI gym
 documentation, the framework follows the classic “agent-environment loop”.
@@ -56,9 +57,8 @@ documentation, the framework follows the classic “agent-environment loop”.
 `observation` and a `reward`. The process gets started by calling `reset()`,
 which returns an initial `observation`."
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/agent_env_loop.svg">
-</p>
+.. image:: https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/agent_env_loop.svg
+   :alt: Agent-environment loop
 
 Deepbots follows this exact agent-environment loop with the only difference
 being that the agent, which is responsible to choose an action, runs on the
@@ -92,9 +92,8 @@ combines the `Supervisor` and the `Robot` into one controller and circumvents
 that issue, while being less flexible, which is discussed
 :ref:`later <combined>`.
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/deepbots_overview.png">
-</p>
+.. image:: https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/deepbots_overview.png
+   :alt: Deepbots overview
 
 On one hand, the `emitter` is an entity which is provided by Webots, that
 broadcasts messages to the world. On the other hand, the `receiver` is an
@@ -114,9 +113,8 @@ You can follow the
 `emitter-receiver scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/blob/master/emitterReceiverSchemeTutorial/README.md>`_
 to get started and work your way up from there.
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/workflow_diagram.png">
-</p>
+.. image:: https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/workflow_diagram.png
+   :alt: Workflow diagram
 
 .. _combined:
 
