@@ -9,11 +9,3 @@ Subpackages
 
    deepbots.robots
    deepbots.supervisor
-
-Module contents
----------------
-
-.. automodule:: deepbots
-   :members:
-   :undoc-members:
-   :show-inheritance:

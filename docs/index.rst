@@ -19,16 +19,13 @@ create custom RL environments in Webots.**
 
    The documentation site is under active development.
 
-Contents
---------
-
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 8
+   :caption: Contents
 
    Home <self>
    installation
 
-   deepbots/modules
    deepbots/deepbots
 
 Official resources
