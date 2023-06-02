@@ -34,7 +34,7 @@ Contents
    :maxdepth: 2
    :caption: Reference
 
-   deepbots/deepbots
+   source/modules
 
 Official resources
 ------------------
