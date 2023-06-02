@@ -12,15 +12,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
 
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
 project = "deepbots"
 copyright = "GNU General Public License v3.0"
 author = "aidudezzz"
-
 
 # -- General configuration ---------------------------------------------------
 # -- General configuration
@@ -53,6 +52,9 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # This is needed to ignore the webots imports "from controller..."
 autodoc_mock_imports = ["controller"]
+
+# Order class methods on how they appear in the source code
+autodoc_member_order = "bysource"
 
 # -- Options for HTML output -------------------------------------------------
 
