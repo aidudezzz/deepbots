@@ -2,9 +2,15 @@ How *deepbots* works
 ====================
 
 Here you can find a high-level explanation on how the framework is structured
-and how it actually works. Read on if you want to dig deeper into how and why
-*deepbots* works the way it does. If you want a quick start, visit our
-`beginner tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_!
+and how it actually works.
+
+*Read on if you want to dig deeper into how and why
+deepbots works the way it does. If you want a quick start, visit our
+`beginner tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_*
+and if you want to see *deepbots* in action, visit `deepworlds <https://github.com/aidudezzz/deepworlds>`_!
+
+Overview
+========
 
 First of all let's set up a simple glossary:
 
@@ -75,8 +81,8 @@ robot simulator. More specifically,
 :py:meth:`deepbots.supervisor.DeepbotsSupervisorEnv` is the main class that
 provides the interface which is used by the Reinforcement Learning algorithms
 and follows gym's environment logic. *Deepbots* provides different levels of
-abstraction according to the user's needs. Moreover, the framework provides
-different wrappers for additional functionalities.
+abstraction to be used according to the user's needs. Moreover, the framework
+provides different wrappers for additional functionalities.
 
 *Deepbots* also provides a default implementation of the `reset()` method,
 leveraging Webots' built-in simulation reset functions, removing the need for
@@ -90,6 +96,14 @@ to your use-case and deepbots handles interfacing the environment with
 Webots. As your familiarity and/or needs grow, you can override deepbot's
 methods to alter functionality or inherit from classes higher up in the
 hierarchy.**
+
+*Deepbots* targets users that are unfamiliar with either Webots or
+gym environments or both. If you have a strong understanding of both, you can
+forgo using *deepbots* altogether, but if you chose otherwise, it can make
+your code more modular and clean.
+
+The two *deepbots* schemes
+==========================
 
 *Deepbots* includes two schemes to set up your RL environment, the
 `emitter-receiver scheme` which separates the `Robot` and the `Supervisor` in
@@ -172,11 +186,11 @@ interacts with.
 
 You can follow the
 `robot-supervisor scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_
-to get started and work your way up from there. *We recommend this
-scheme/tutorial to get started with deepbots*.
+to get started and work your way up from there. **We recommend this
+scheme/tutorial to get started with deepbots.**
 
 Abstraction Levels
-------------------
+==================
 
 The *deepbots* framework has been created mostly for educational and
 research purposes. The aim of the framework is to enable people to use
@@ -190,5 +204,6 @@ gym interface. Below that level there are partially implemented classes
 with common functionality. These implementations aim to hide the communication
 between the `Supervisor` and the `Robot` and other various functions needed by
 the simulator for a gym environment to work, as described in the two different
-schemes earlier. Users are free to create their own classes inheriting from
-whichever *deepbots* class they choose and customize according to their needs.
+schemes earlier. Feel free to explore the documentation and the full family
+of classes and to create and customize your own, inheriting from whichever
+*deepbots* class you choose according to your needs.
