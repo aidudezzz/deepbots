@@ -1,12 +1,12 @@
 deepbots.robots.controllers
 ===========================
 
-.. automodule:: deepbots.robots.controllers.csv_robot
+.. autoclass:: deepbots.robots.EmitterReceiverRobot
    :members:
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: deepbots.robots.controllers.emitter_receiver_robot
+.. autoclass:: deepbots.robots.CSVRobot
    :members:
    :undoc-members:
    :show-inheritance:

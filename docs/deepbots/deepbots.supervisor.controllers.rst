@@ -6,18 +6,18 @@ deepbots.supervisor.controllers
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: deepbots.supervisor.controllers.robot_supervisor_env
+.. autoclass:: deepbots.supervisor.RobotSupervisorEnv
    :members:
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: deepbots.supervisor.controllers.csv_supervisor_env
+.. autoclass:: deepbots.supervisor.CSVSupervisorEnv
    :members:
    :undoc-members:
    :show-inheritance:
 
 
-.. automodule:: deepbots.supervisor.controllers.emitter_receiver_supervisor_env
+.. autoclass:: deepbots.supervisor.EmitterReceiverSupervisorEnv
    :members:
    :undoc-members:
    :show-inheritance:

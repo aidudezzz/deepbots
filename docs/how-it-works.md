@@ -145,20 +145,3 @@ schemes ealier. Similarly, in the `emitter`/`receiver` scheme the `Robot` also
 has different abstraction levels. According to their needs, users can choose
 either to process the messages received from the `Supervisor` themselves or use
 the existing implementations.
-
-
-.. automodule:: deepbots
-    :members:
-    :imported-members:
-
-.. automodule:: deepbots.robots
-    :members:
-    :imported-members:
-
-.. automodule:: deepbots.supervisor
-    :members:
-    :imported-members:
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
