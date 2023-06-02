@@ -27,7 +27,7 @@ Contents
 
    Home <self>
    installation
-   deepbots/
+   deepbots/deepbots
 
 Official resources
 ------------------
