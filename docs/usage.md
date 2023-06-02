@@ -1,5 +1,5 @@
-TODO
-====
+Usage
+=====
 
 .. _installation:
 
