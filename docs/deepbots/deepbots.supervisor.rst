@@ -1,19 +1,9 @@
-deepbots.supervisor package
-===========================
-
-Subpackages
+deepbots.supervisor
+===================
 -----------
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
    deepbots.supervisor.controllers
    deepbots.supervisor.wrappers
-
-Module contents
----------------
-
-.. automodule:: deepbots.supervisor
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,5 +1,5 @@
-deepbots.robots.controllers package
-===================================
+deepbots.robots.controllers
+===========================
 
 .. automodule:: deepbots.robots.controllers.csv_robot
    :members:
