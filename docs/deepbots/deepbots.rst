@@ -1,4 +1,4 @@
-Reference
+deepbots
 =========
 
 .. toctree::
