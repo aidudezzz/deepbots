@@ -13,9 +13,9 @@ Prerequisites
    * `macOS <https://cyberbotics.com/doc/guide/installation-procedure#installation-on-macos>`_
 
 #. `Install Python version 3.X <https://www.python.org/downloads>`_ (please refer to
-   `Using Python <https://cyberbotics.com/doc/guide/using-python#introduction>`_
+   `Using Python <https://cyberbotics.com/doc/guide/using-python#introduction>`__
    to select the proper Python version for your system)
-#. Refer to the `Using Python <https://cyberbotics.com/doc/guide/using-python>`_
+#. Refer to the `Using Python <https://cyberbotics.com/doc/guide/using-python>`__
    guide provided by Webots
 #. Webots provides a basic code editor, but if you want to use
    `PyCharm <https://www.jetbrains.com/pycharm>`_ as your IDE refer to
@@ -29,6 +29,9 @@ using the gym logic, so it can work with any backend library you choose
 to implement the agent with and any agent that already works with gym, such
 as `stable-baselines3 <https://github.com/DLR-RM/stable-baselines3>`_
 implementations.
+
+
+.. _Install deepbots:
 
 Install deepbots
 ----------------
