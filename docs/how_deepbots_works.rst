@@ -4,13 +4,13 @@ How *deepbots* works
 Here you can find a high-level explanation on how the framework is structured
 and how it actually works.
 
-*Read on if you want to dig deeper into how and why
-deepbots works the way it does. If you want a quick start, visit our
-`beginner tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_*
+**Read on if you want to dig deeper into how and why
+deepbots works the way it does. If you want a quick start, visit our**
+`beginner tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_
 and if you want to see *deepbots* in action, visit `deepworlds <https://github.com/aidudezzz/deepworlds>`_!
 
 Overview
-========
+--------
 
 First of all let's set up a simple glossary:
 
@@ -91,9 +91,9 @@ possible to override this method and implement any custom reset procedure as
 needed by the use-case.
 
 **All-in-all to set up your gym environment you have to create a class that
-inherits one of deepbot's classes and implement the methods that are specific
-to your use-case and deepbots handles interfacing the environment with
-Webots. As your familiarity and/or needs grow, you can override deepbot's
+inherits one of deepbots' classes and implement the methods that are specific
+to your use-case and deepbots will handle interfacing the environment with
+Webots. As your familiarity and/or needs grow, you can override deepbots'
 methods to alter functionality or inherit from classes higher up in the
 hierarchy.**
 
@@ -103,7 +103,7 @@ forgo using *deepbots* altogether, but if you chose otherwise, it can make
 your code more modular and clean.
 
 The two *deepbots* schemes
-==========================
+--------------------------
 
 *Deepbots* includes two schemes to set up your RL environment, the
 `emitter-receiver scheme` which separates the `Robot` and the `Supervisor` in
@@ -111,14 +111,14 @@ two different entities and the `Robot-Supevisor scheme` which combines them
 into one entity. Both are described below.
 
 Emitter - receiver scheme
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this scheme the Robot and the Supervisor are separated into two entities
+In this scheme the `Robot` and the `Supervisor` are separated into two entities
 within the World. Communication between the two nodes is needed so the
 `Supervisor` can send the agent's actions to the `Robot` and for the `Robot`
 to send back its observations, and can be achieved in various ways.
 The main way communication between the `Supervisor` and the `Robot` is
-achieved is via `emitters` and `receivers`. By separating the `Supervisor`
+achieved, is via `emitters` and `receivers`. By separating the `Supervisor`
 from the `Robot`, *deepbots* can fit a variety of use-cases, e.g. multiple
 `Robots` collecting experience and a `Supervisor` controlling them with a
 single agent. The way Webots implements `emitter`/`receiver` communication
@@ -168,7 +168,7 @@ to get started and work your way up from there.
 .. _combined:
 
 Combined Robot-Supervisor scheme
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As mentioned earlier, in use-cases where the observation transmitted between
 the `Robot` and the `Supervisor` is high-dimensional or long, e.g. high
@@ -185,12 +185,12 @@ You can take a look at the combined `Robot - Supervisor` environment class in
 interacts with.
 
 You can follow the
-`robot-supervisor scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/tree/master/robotSupervisorSchemeTutorial>`_
+`robot-supervisor scheme tutorial <https://github.com/aidudezzz/deepbots-tutorials/blob/master/robotSupervisorSchemeTutorial/README.md>`_
 to get started and work your way up from there. **We recommend this
 scheme/tutorial to get started with deepbots.**
 
 Abstraction Levels
-==================
+------------------
 
 The *deepbots* framework has been created mostly for educational and
 research purposes. The aim of the framework is to enable people to use
