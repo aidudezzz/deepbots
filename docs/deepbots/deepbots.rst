@@ -1,8 +1,5 @@
-deepbots package
-================
-
-Subpackages
------------
+Reference
+=========
 
 .. toctree::
    :maxdepth: 4
