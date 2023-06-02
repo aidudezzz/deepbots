@@ -4,7 +4,7 @@ Installation
 .. note::
 
    It's probably a safer choice to install deepbots in a virtual environment.
-   You can do that using running `venv <https://docs.python.org/3/library/venv.html>`_:
+   You can do that using `venv <https://docs.python.org/3/library/venv.html>`_:
 
    ``python3 -m venv deepbots-env``
 
@@ -12,7 +12,7 @@ Installation
 
    ``source deepbots-env/bin/activate``
 
-   before installing `deepbots` and other prerequisites such as the
+   before installing `deepbots` and other python prerequisites such as the
    backend neural network framework.
 
 Prerequisites
@@ -48,7 +48,7 @@ Install deepbots
 Deepbots can be installed through the package installer
 `pip <https://pip.pypa.io/en/stable>`_ running the following command:
 
-.. code-block:: console
+.. code-block:: bash
 
    pip install deepbots
 
