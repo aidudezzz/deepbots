@@ -1,7 +1,7 @@
 deepbots.supervisor.controllers
 ===============================
 
-.. autoclass:: deepbots.supervisor.controllers.deepbots_supervisor_env
+.. autoclass:: deepbots.supervisor.deepbots_supervisor_env
    :members:
    :undoc-members:
    :show-inheritance:
