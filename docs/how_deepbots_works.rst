@@ -59,6 +59,7 @@ which returns an initial `observation`."
 
 .. image:: https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/agent_env_loop.svg
    :alt: Agent-environment loop
+   :align: center
 
 Deepbots follows this exact agent-environment loop with the only difference
 being that the agent, which is responsible to choose an action, runs on the
@@ -94,6 +95,7 @@ that issue, while being less flexible, which is discussed
 
 .. image:: https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/deepbots_overview.png
    :alt: Deepbots overview
+   :align: center
 
 On one hand, the `emitter` is an entity which is provided by Webots, that
 broadcasts messages to the world. On the other hand, the `receiver` is an
@@ -115,6 +117,7 @@ to get started and work your way up from there.
 
 .. image:: https://raw.githubusercontent.com/aidudezzz/deepbots/dev/doc/img/workflow_diagram.png
    :alt: Workflow diagram
+   :align: center
 
 .. _combined:
 
