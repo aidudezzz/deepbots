@@ -1,4 +1,4 @@
-Welcome to *deepbots*' documentation!
+Welcome to **deepbots**' documentation!
 =====================================
 
 
@@ -27,6 +27,8 @@ Contents
    usage
 
 
+.. _Official resources:
+
 Official resources
 ------------------
 
@@ -36,6 +38,8 @@ Official resources
 - On `the deepworlds repository <https://github.com/aidudezzz/deepworlds>`_ you
   can find examples of deepbots being used. <br>Feel free to contribute your
   own!
+
+.. _Citation:
 
 Citation
 ________
