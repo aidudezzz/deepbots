@@ -10,3 +10,8 @@ deepbots.supervisor.wrappers
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: deepbots.supervisor.wrappers
+   :members:
+   :undoc-members:
+   :show-inheritance:

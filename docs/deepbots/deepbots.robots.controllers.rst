@@ -10,3 +10,8 @@ deepbots.robots.controllers
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: deepbots.robots.controllers
+   :members:
+   :undoc-members:
+   :show-inheritance:

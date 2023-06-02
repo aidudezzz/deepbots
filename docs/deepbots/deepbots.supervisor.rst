@@ -6,3 +6,8 @@ deepbots.supervisor
 
    deepbots.supervisor.controllers
    deepbots.supervisor.wrappers
+
+.. automodule:: deepbots.supervisor
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -20,3 +20,8 @@ deepbots.supervisor.controllers
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: deepbots.supervisor.controllers
+   :members:
+   :undoc-members:
+   :show-inheritance:
