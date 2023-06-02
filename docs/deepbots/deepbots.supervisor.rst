@@ -1,6 +1,5 @@
 deepbots.supervisor
 ===================
------------
 
 .. toctree::
    :maxdepth: 2
