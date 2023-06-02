@@ -10,6 +10,11 @@ Welcome to *deepbots*' documentation!
 Contents
 --------
 
+.. toctree::
+
+   Home <self>
+   installation
+
 .. automodule:: deepbots.robots
     :members:
     :imported-members:
