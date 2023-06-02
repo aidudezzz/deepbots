@@ -71,7 +71,7 @@ This publication reflects the authors’ views only. The European Commission is
 not responsible for any use that may be made of the information it contains.
 
 .. autosummary::
-   :toctree: generated
    :recursive:
+   :toctree: generated
 
-   deepbots.robots
+   deepbots.robots.controllers
