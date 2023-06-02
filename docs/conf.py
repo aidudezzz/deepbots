@@ -65,5 +65,5 @@ html_theme = "sphinx_rtd_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
-html_logo = 'https://raw.githubusercontent.com/aidudezzz/deepbots-swag/main/logo/deepbots_square_small.png'
+html_logo = 'https://raw.githubusercontent.com/aidudezzz/deepbots-swag/main/logo/deepbots_square_smaller.png'
 html_favicon = 'https://raw.githubusercontent.com/aidudezzz/deepbots-swag/main/logo/favicon.ico'
