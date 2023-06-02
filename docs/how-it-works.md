@@ -147,6 +147,10 @@ either to process the messages received from the `Supervisor` themselves or use
 the existing implementations.
 
 
+.. automodule:: deepbots
+    :members:
+    :imported-members:
+
 .. automodule:: deepbots.robots
     :members:
     :imported-members:
