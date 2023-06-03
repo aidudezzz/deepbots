@@ -1,6 +1,5 @@
 FROM cyberbotics/webots:latest
 
-ARG python_version=3.10
 ARG branch
 ARG conda
 
@@ -23,8 +22,11 @@ RUN pip install --upgrade pip
 RUN pip install gym==0.21.0
 RUN if [ $branch = "main" ]; then pip install deepbots ; \
     else \
-        if [ $branch = "github" ]; then pip install git+https://github.com/aidudezzz/deepbots.git ; \
-        else if [ $branch = "dev" ]; then pip install -i https://test.pypi.org/simple/ deepbots ; fi ;\
+        if [ $branch = "dev" ]; then \
+            pip install git+https://github.com/aidudezzz/deepbots.git ; \
+        else if [[ $branch == *"deepbots"* ]]; then \
+            pip install --index-url https://pypi.org/simple/ $branch ; \
+            fi ; \
         fi ; \
     fi
 
