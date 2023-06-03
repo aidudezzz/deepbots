@@ -1,33 +1,39 @@
+> **Warning**
+> 
+> Docker stuff are not thoroughly maintained.
+> 
+> Use at your own discretion.
+
 # Using deepbots with Docker
 ## Pull the existing image from [DockerHub](https://hub.docker.com/u/aidudezzz)
 * Docker image without conda:
    ```bash
-   docker pull aidudezzz/deepbots:0.1.3.dev3
+   docker pull aidudezzz/deepbots:latest
    ```
-   * You could replace `0.1.3.dev3` with another available tag: https://hub.docker.com/r/aidudezzz/deepbots/tags
+   * You could replace `latest` with another available tag: https://hub.docker.com/r/aidudezzz/deepbots/tags
 * Docker image without conda:
    ```bash
-   docker pull aidudezzz/deepbots-conda:0.1.3.dev3
+   docker pull aidudezzz/deepbots-conda:latest
    ```
-   * You could replace `0.1.3.dev3` with another available tag: https://hub.docker.com/r/aidudezzz/deepbots-conda/tags
+   * You could replace `latest` with another available tag: https://hub.docker.com/r/aidudezzz/deepbots-conda/tags
 ## Build and tag a Docker image:
-You could replace `aidudezzz/deepbots:0.1.3.dev3` with another name and optionally add a tag in the 'name:tag' format.
+You could replace `aidudezzz/deepbots:latest` with another name and optionally add a tag in the 'name:tag' format.
 * Docker image without conda:
    ```bash
-   docker build -t aidudezzz/deepbots:0.1.3.dev3 --build-arg branch=dev .
+   docker build -t aidudezzz/deepbots:latest --build-arg branch=main .
    ```
-* Docker image without conda:
+* Docker image with conda:
    ```bash
-   docker build -t aidudezzz/deepbots-conda:0.1.3.dev3 . --build-arg branch=dev --build-arg conda==true
+   docker build -t aidudezzz/deepbots-conda:latest . --build-arg branch=main --build-arg conda==true
    ```
 In case you would like to add other functionalities/libraries on the Docker image:
 * Edit the Dockerfile
 * Build the Docker image
 * Building arguments
    * `branch`
-      * `dev`: Install [the latest version of deepbots on TestPyPI](https://test.pypi.org/search/?q=deepbots).
       * `main`: Install [the latest version of deepbots on PyPI](https://pypi.org/project/deepbots/).
-      * `github`: Install from [the dev branch of deepbots on GitHub](https://github.com/aidudezzz/deepbots/tree/dev).
+      * `deepbots==<version>`: Install the specific version of deepbots on [PyPI](https://pypi.org/project/deepbots/).
+      * `dev`: Install from [the dev branch of deepbots on GitHub](https://github.com/aidudezzz/deepbots/tree/dev).
    * `conda`
       * `true`: Install miniconda.
 ## Use CUDA on your Docker container
@@ -64,7 +70,7 @@ docker run -it -v /absolute/path/to/webots/project:/workspace/name-of-project <u
 
 ### Use Docker with CUDA (GPU)
 ``` bash
-docker run --rm --gpus all run -it -v /absolute/path/to/webots/project:/workspace/name-of-project <user-name>/<repo-name>
+docker run --rm --gpus all -it -v /absolute/path/to/webots/project:/workspace/name-of-project <user-name>/<repo-name>
 ```
 
 After starting the Docker container you can start Webots headlessly using xvfb:
