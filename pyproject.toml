@@ -2,6 +2,10 @@
 requires = ["setuptools==65.5.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "deepbots"
+authors = [{name = "aidudezzz", email = "deepbots@protonmail.com"}]
+dynamic = ["version", "description"]
 
 [tool.black]
 line-length = 79
