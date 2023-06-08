@@ -6,7 +6,8 @@
 
 .. note::
 
-   The documentation site is under active development.
+   The documentation site is under active development. Check out `this PR <https://github.com/aidudezzz/deepbots/pull/146>`_
+   for an idea on what to expect in the future!
 
 `Deepbots <https://github.com/aidudezzz/deepbots>`_ is a simple framework
 which is used as "middleware" between the free and open-source
