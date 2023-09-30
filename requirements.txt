@@ -1,2 +1,2 @@
-gym==0.21
+gymnasium>=0.28.1,<0.30
 tensorboardX
