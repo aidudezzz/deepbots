@@ -71,7 +71,8 @@ class EmitterReceiverSupervisorEnv(DeepbotsSupervisorEnv):
         return (
             self.get_observations(),
             self.get_reward(action),
-            self.is_done(),
+            self.is_terminated(),
+            self.is_truncated(),
             self.get_info(),
         )
 
