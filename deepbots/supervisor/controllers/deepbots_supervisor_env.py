@@ -1,4 +1,4 @@
-import gym
+import gymnasium as gym
 from controller import Supervisor
 
 
@@ -43,7 +43,7 @@ class DeepbotsSupervisorEnv(Supervisor, gym.Env):
         """
         raise NotImplementedError
 
-    def reset(self):
+    def reset(self, **kwargs):
         """
         Used to reset the world to an initial state.
 
@@ -62,7 +62,7 @@ class DeepbotsSupervisorEnv(Supervisor, gym.Env):
         self.simulationReset()
         self.simulationResetPhysics()
         super(Supervisor, self).step(int(self.getBasicTimeStep()))
-        return self.get_default_observation()
+        return self.get_default_observation(), {}
 
     def get_default_observation(self):
         """
@@ -107,6 +107,12 @@ class DeepbotsSupervisorEnv(Supervisor, gym.Env):
 
         :return: bool, True if the episode is done
         """
+        raise NotImplementedError
+
+    def is_terminated(self):
+        raise NotImplementedError
+    
+    def is_truncated(self):
         raise NotImplementedError
 
     def get_info(self):
